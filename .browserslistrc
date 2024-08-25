@@ -1,0 +1,4 @@
+# https://github.com/tailwindlabs/tailwindcss/blob/fb1743b4b028323d83f5b5f9866ec0f6595fe08c/package.json#L89-L93
+defaults and supports css-variables and supports css-matches-pseudo
+not android <= 117
+safari >= 14
