@@ -23,12 +23,12 @@ export const useAuthStore = defineStore('auth', () => {
 	});
 
 	const setUserData = (data) => {
-		user.value = {
+		user.value = JSON.stringify({
 			first_name: data?.first_name ?? null,
 			last_name: data?.last_name ?? null,
 			email: data?.email ?? null,
 			roles: data?.roles ?? [],
-		};
+		});
 	};
 
 	const clean = () => {
