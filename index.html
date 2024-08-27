@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="es">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<title>%VITE_APP_TITLE% • %VITE_APP_DESC%</title>
+		<meta
+			name="description"
+			content="%VITE_APP_TITLE% - %VITE_APP_DESC% - %VITE_COMPANY_NAME%"
+		/>
+
+		<link
+			rel="apple-touch-icon"
+			sizes="180x180"
+			href="%VITE_APP_DOMAIN%/favicon/apple-touch-icon.png"
+		/>
+		<link
+			rel="icon"
+			type="image/png"
+			sizes="32x32"
+			href="%VITE_APP_DOMAIN%/favicon/favicon-32x32.png"
+		/>
+		<link
+			rel="icon"
+			type="image/png"
+			sizes="16x16"
+			href="%VITE_APP_DOMAIN%/favicon/favicon-16x16.png"
+		/>
+		<link
+			rel="manifest"
+			href="%VITE_APP_DOMAIN%/favicon/site.webmanifest"
+		/>
+		<link
+			rel="mask-icon"
+			href="%VITE_APP_DOMAIN%/favicon/safari-pinned-tab.svg"
+			color="#0284c7"
+		/>
+		<link
+			rel="shortcut icon"
+			href="%VITE_APP_DOMAIN%/favicon/favicon.ico"
+		/>
+		<meta name="msapplication-TileColor" content="#f3f4f6" />
+		<meta
+			name="msapplication-config"
+			content="%VITE_APP_DOMAIN%/favicon/browserconfig.xml"
+		/>
+		<meta name="theme-color" content="#f3f4f6" />
+		<meta property="og:locale" content="%VITE_FACEBOOK_LOCALE%" />
+		<meta property="og:site_name" content="%VITE_APP_TITLE%" />
+		<meta property="og:type" content="website" />
+		<meta
+			property="og:description"
+			content="%VITE_APP_TITLE% - %VITE_APP_DESC% - %VITE_COMPANY_NAME%"
+		/>
+		<meta
+			property="og:image"
+			content="%VITE_APP_DOMAIN%/favicon/android-chrome-512x512.png"
+		/>
+		<meta property="og:image:type" content="image/png" />
+		<meta property="og:image:width" content="512" />
+		<meta property="og:image:height" content="512" />
+		<meta name="twitter:card" content="summary" />
+		<meta name="twitter:site" content="%VITE_TWITTER_AUTHOR%" />
+		<meta name="twitter:title" content="%VITE_APP_TITLE%" />
+		<meta
+			name="twitter:description"
+			content="%VITE_APP_TITLE% - %VITE_APP_DESC% - %VITE_COMPANY_NAME%"
+		/>
+		<meta
+			name="twitter:image"
+			content="%VITE_APP_DOMAIN%/favicon/android-chrome-512x512.png"
+		/>
+		<script type="application/ld+json">
+			{
+				"@context": "https://schema.org",
+				"@type": "WebSite",
+				"headline": "%VITE_APP_TITLE%",
+				"description": "%VITE_APP_TITLE% - %VITE_APP_DESC% - %VITE_COMPANY_NAME%",
+				"image": "%VITE_APP_DOMAIN%/favicon/android-chrome-512x512.png",
+				"author": {
+					"@type": "Organization",
+					"name": "%VITE_COMPANY_NAME%",
+					"legalName": "%VITE_COMPANY_NAME%"
+				},
+				"publisher": {
+					"@type": "Organization",
+					"name": "%VITE_COMPANY_NAME%",
+					"legalName": "%VITE_COMPANY_NAME%",
+					"url": "%VITE_COMPANY_URL%",
+					"logo": {
+						"@type": "ImageObject",
+						"url": "%VITE_APP_DOMAIN%/favicon/android-chrome-512x512.png",
+						"width": "512",
+						"height": "512"
+					}
+				}
+			}
+		</script>
+	</head>
+	<body class="font-sans antialiased bg-gray-100">
+		<div
+			id="app"
+			class="flex flex-col flex-auto flex-shrink-0 min-h-screen"
+		></div>
+		<script type="module" src="/src/main.js"></script>
+	</body>
+</html>
