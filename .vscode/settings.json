@@ -1,0 +1,29 @@
+{
+	"editor.linkedEditing": true,
+	"editor.insertSpaces": false,
+	"prettier.singleQuote": true,
+	"prettier.jsxSingleQuote": true,
+	"editor.formatOnSave": true,
+	"emmet.includeLanguages": {
+		"vue-html": "html"
+	},
+	"html.autoClosingTags": true,
+	"[vue]": {
+		"editor.defaultFormatter": "esbenp.prettier-vscode"
+	},
+	"[html]": {
+		"editor.defaultFormatter": "esbenp.prettier-vscode"
+	},
+	"[javascript]": {
+		"editor.defaultFormatter": "esbenp.prettier-vscode"
+	},
+	"[json]": {
+		"editor.defaultFormatter": "vscode.json-language-features"
+	},
+	"[jsonc]": {
+		"editor.defaultFormatter": "vscode.json-language-features"
+	},
+	"[markdown]": {
+		"editor.defaultFormatter": "yzhang.markdown-all-in-one"
+	}
+}

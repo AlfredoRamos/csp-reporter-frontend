@@ -1,0 +1,9 @@
+{
+	"recommendations": [
+		"Vue.volar",
+		"bradlc.vscode-tailwindcss",
+		"EditorConfig.EditorConfig",
+		"esbenp.prettier-vscode",
+		"yzhang.markdown-all-in-one"
+	]
+}
