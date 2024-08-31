@@ -18,6 +18,11 @@ const endpoints = {
 			update: apiPath + '/auth/recover/update',
 		},
 	},
+	csp: {
+		reports: {
+			index: apiPath + '/csp/reports/all',
+		},
+	},
 };
 
 export default endpoints;

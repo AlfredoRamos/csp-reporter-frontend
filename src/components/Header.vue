@@ -40,7 +40,7 @@ const handleLogout = (e) => {
 
 <template>
 	<header
-		class="bg-gray-200 text-gray-800 shadow sticky top-0 left-0 right-0 z-10"
+		class="bg-sky-900 text-gray-50 shadow sticky top-0 left-0 right-0 z-10"
 		:class="{ [props?.class]: props?.class?.length > 0 }"
 	>
 		<div
@@ -49,14 +49,16 @@ const handleLogout = (e) => {
 			<RouterLink
 				:to="{ name: 'home' }"
 				:title="`${defaultTitle} - ${defaultDescription}`"
+				class="flex flex-wrap items-center justify-between gap-1 font-bold"
 			>
 				<div
 					class="block bg-logo bg-no-repeat bg-contain bg-center w-10 h-10"
 				></div>
+				{{ defaultTitle }}
 			</RouterLink>
 			<button
 				type="button"
-				class="navbar-toggler lg:hidden flex justify-center p-2 text-xl bg-green-700 hover:bg-green-700/70 text-gray-100 hover:text-gray-50 rounded disabled:cursor-not-allowed"
+				class="navbar-toggler lg:hidden flex justify-center p-2 text-xl bg-sky-700 hover:bg-sky-700/70 text-gray-50 rounded disabled:cursor-not-allowed"
 				aria-label="Toggle menu"
 				@click="toggle"
 			>
@@ -69,8 +71,8 @@ const handleLogout = (e) => {
 			>
 				<Dropdown
 					class="w-fit rounded transition ease-in-out duration-75"
-					trigger-class="hover:bg-gray-300/70 text-gray-900"
-					open-class="bg-gray-300/70"
+					trigger-class="hover:bg-sky-700/70 text-gray-50"
+					open-class="bg-gray-700/70"
 				>
 					<template #trigger>
 						<Icon

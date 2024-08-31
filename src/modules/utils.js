@@ -1,3 +1,5 @@
+const defaultLocale = import.meta.env.VITE_LOCALE ?? 'en-US';
+
 const isValidUuid = (uuid) => {
 	if (uuid?.length != 36) {
 		return false;
@@ -20,7 +22,7 @@ const formatNumber = (number, options) => {
 	};
 
 	return new Intl.NumberFormat(
-		'es-MX',
+		defaultLocale,
 		Object.assign(defaultOptions, options),
 	).format(number);
 };
@@ -39,26 +41,26 @@ const formatCurrency = (number, options) => {
 	};
 
 	return new Intl.NumberFormat(
-		'es-MX',
+		defaultLocale,
 		Object.assign(defaultOptions, options),
 	).format(number);
 };
 
-const formatDateTime = (dateTime, options, time = false) => {
+const formatDateTime = (dateTime, withTime, options) => {
 	if (typeof dateTime === 'string') {
 		dateTime = new Date(dateTime);
 	}
 
-	const defaultOptions = {
+	let defaultOptions = {
 		year: 'numeric',
 		month: '2-digit',
 		day: '2-digit',
-		hour12: true,
 		timeZone: 'America/Mexico_City',
 	};
 
-	if (time) {
-		options = Object.assign(options, {
+	if (withTime === true) {
+		defaultOptions = Object.assign(defaultOptions, {
+			hour12: true,
 			hour: '2-digit',
 			minute: '2-digit',
 			second: '2-digit',
@@ -67,27 +69,7 @@ const formatDateTime = (dateTime, options, time = false) => {
 
 	const opts = Object.assign(defaultOptions, options);
 
-	return new Intl.DateTimeFormat('es-MX', opts).format(dateTime);
-};
-
-const formatDateTimeHour = (dateTime, options) => {
-	if (typeof dateTime === 'string') {
-		dateTime = new Date(dateTime);
-	}
-
-	const defaultOptions = {
-		year: 'numeric',
-		month: '2-digit',
-		day: '2-digit',
-		hour: 'numeric',
-		minute: 'numeric',
-		timeZone: 'America/Mexico_City',
-	};
-
-	return new Intl.DateTimeFormat(
-		'es-MX',
-		Object.assign(defaultOptions, options),
-	).format(dateTime);
+	return new Intl.DateTimeFormat(defaultLocale, opts).format(dateTime);
 };
 
 const findIdIndex = (list, id) => {
@@ -262,6 +244,5 @@ export {
 	formatFileSize,
 	basename,
 	extname,
-	formatDateTimeHour,
 	isValidDate,
 };
