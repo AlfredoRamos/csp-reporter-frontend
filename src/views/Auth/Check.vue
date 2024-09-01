@@ -31,7 +31,6 @@ onBeforeMount(() => {
 	})
 		.then((response) => {
 			if (response?.status === 200) {
-				auth?.setUserData(response?.data?.data ?? {});
 				window.location.href = new URL(
 					router.resolve({ name: 'home' })?.href,
 					window.location.origin,

@@ -87,7 +87,7 @@ const handleSubmit = async (e) => {
 	// Login
 	loading.value = true;
 	http.post(endpoints?.auth?.login, formData.value)
-		.then((response) => {
+		.then(async (response) => {
 			if (!errors.value?.global) {
 				errors.value = { ...errors.value, global: [] };
 			}
@@ -104,7 +104,7 @@ const handleSubmit = async (e) => {
 				return;
 			}
 
-			auth?.setAccessToken(token);
+			await auth?.setAccessToken(token);
 			router.push({ name: 'auth_check' });
 		})
 		.catch((error) => {

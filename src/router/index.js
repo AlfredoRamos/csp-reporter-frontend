@@ -1,5 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router';
-// import { hasPermission, hasRouteAccess } from '@/modules/auth';
+import { hasPermission, hasRouteAccess } from '@/modules/auth';
 
 const isAuthenticated = !!window.localStorage.getItem('access_token');
 
@@ -12,28 +12,26 @@ if (!isAuthenticated) {
 	removeAccessToken();
 }
 
-// const getUserRoles = () => {
-// 	let roles = [];
+const getUserRoles = () => {
+	let roles = [];
 
-// 	try {
-// 		roles = JSON.parse(window.localStorage.getItem('user'))?.roles ?? [];
-// 	} catch (ex) {
-// 		roles = [];
-// 	}
+	try {
+		roles = JSON.parse(window.localStorage.getItem('user'))?.roles ?? [];
+	} catch (ex) {
+		roles = [];
+	}
 
-// 	return roles;
-// };
+	return roles;
+};
 
-// const roles = getUserRoles();
+const roles = getUserRoles();
 
-// TODO: Validate user roles
 const dashboardRoute = () => {
-	// if (hasPermission(['superadmin', 'admin'], roles)) {
-	// 	return import('@/views/Admin/Dashboard.vue');
-	// } else if (hasPermission(['viewer'], roles)) {
-	// 	return import('@/views/Viewer/Dashboard.vue');
-	// }
-	return import('@/views/Admin/Dashboard.vue');
+	if (hasPermission(['superadmin', 'admin'], roles)) {
+		return import('@/views/Admin/Dashboard.vue');
+	} else if (hasPermission(['viewer'], roles)) {
+		return import('@/views/Viewer/Dashboard.vue');
+	}
 };
 
 const router = createRouter({
@@ -167,10 +165,10 @@ router.beforeEach((to, from, next) => {
 
 	// Auth guard
 	if (isAuthenticated) {
-		// if (!hasRouteAccess(to?.meta?.roles ?? [], roles)) {
-		// 	removeAccessToken();
-		// 	return next({ name: '403' });
-		// }
+		if (!hasRouteAccess(to?.meta?.roles ?? [], roles)) {
+			removeAccessToken();
+			return next({ name: '403' });
+		}
 
 		if (['auth_login', 'auth_register']?.includes(to.name)) {
 			return next({ name: 'auth_check' });

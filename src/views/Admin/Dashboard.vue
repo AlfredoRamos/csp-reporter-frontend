@@ -15,6 +15,7 @@ import Notification from '@/components/Notification.vue';
 import Loader from '@/components/Loader.vue';
 import endpoints from '@/modules/endpoints';
 import { formatDateTime } from '@/modules/utils';
+import { hasPermission } from '@/modules/auth';
 
 const router = useRouter();
 const http = inject('http');
@@ -132,7 +133,8 @@ const columns = [
 		enableSorting: false,
 		cell: () => {
 			const buttons = [];
-			const canDelete = true;
+			const roles = auth?.userData?.roles ?? [];
+			const canDelete = hasPermission(['superadmin', 'admin'], roles);
 
 			if (canDelete) {
 				buttons.push(
@@ -241,7 +243,7 @@ const loadCSPReports = () => {
 		});
 };
 
-onBeforeMount(() => {
+onBeforeMount(async () => {
 	if (!auth?.accessToken) {
 		auth?.clean();
 		router.push({ name: 'auth_login' });

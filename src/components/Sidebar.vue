@@ -27,7 +27,7 @@ const roles = auth?.userData?.roles ?? [];
 			<nav class="flex flex-col gap-2">
 				<RouterLink
 					:to="{ name: 'home' }"
-					class="truncate px-2 py-1 rounded transition ease-in-out duration-75 bg-sky-700 hover:bg-sky-700/70 text-gray-50 whitespace-nowrap"
+					class="truncate px-2 py-1 rounded transition ease-in-out duration-75 hover:bg-sky-700/70 text-gray-50 whitespace-nowrap"
 					active-class="bg-sky-700/70"
 					title="Home"
 				>
@@ -50,9 +50,9 @@ const roles = auth?.userData?.roles ?? [];
 				<template v-if="hasPermission(['superadmin', 'admin'], roles)">
 					<RouterLink
 						:to="{ name: 'admin_users_review' }"
-						class="truncate px-2 py-1 rounded transition ease-in-out duration-75 bg-sky-700 hover:bg-sky-700/70 text-gray-50 whitespace-nowrap"
+						class="truncate px-2 py-1 rounded transition ease-in-out duration-75 hover:bg-sky-700/70 text-gray-50 whitespace-nowrap"
 						active-class="bg-sky-700/70"
-						title="Users review"
+						title="Manage users"
 					>
 						<Icon
 							icon="heroicons:user-group-solid"
@@ -67,7 +67,7 @@ const roles = auth?.userData?.roles ?? [];
 									navbarToggle.getState === 'open',
 								hidden: navbarToggle.getState === 'close',
 							}"
-							>Users review</span
+							>Manage users</span
 						>
 					</RouterLink>
 				</template>
