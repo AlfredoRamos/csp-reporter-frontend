@@ -117,13 +117,33 @@ const columns = [
 		},
 	},
 	{
+		accessorKey: 'script_sample',
+		header: 'Script sample',
+		cell: (info) => {
+			const data = info.getValue();
+
+			if (!data || data?.length < 1) {
+				return data;
+			}
+
+			return h(
+				'code',
+				{
+					class: 'break-all line-clamp-2 text-sm font-mono bg-gray-100 border p-1 rounded',
+					title: data,
+				},
+				data,
+			);
+		},
+	},
+	{
 		accessorKey: 'created_at',
 		header: 'Reported',
 		cell: (info) => {
 			return h(
 				'div',
-				{ class: 'text-sm font-mono truncate', title: info.getValue() },
-				formatDateTime(info.getValue(), true),
+				{ class: 'text-sm', title: info.getValue() },
+				formatDateTime(info.getValue()),
 			);
 		},
 	},
