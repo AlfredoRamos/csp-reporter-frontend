@@ -65,7 +65,7 @@ onBeforeMount(() => {
 			<Alert
 				v-if="errors?.length > 0"
 				type="error"
-				title="Error al iniciar sesión"
+				title="Error logging in"
 				:narrow="false"
 				>{{ errors?.join('\n') }}</Alert
 			>
