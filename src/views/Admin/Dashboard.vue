@@ -95,6 +95,17 @@ const setSorting = (update) => {
 
 const columns = [
 	{
+		accessorKey: 'site.domain',
+		header: 'Site',
+		cell: (info) => {
+			return h(
+				'div',
+				{ class: 'text-sm font-mono truncate', title: info.getValue() },
+				info.getValue(),
+			);
+		},
+	},
+	{
 		accessorKey: 'blocked_uri',
 		header: 'Blocked URI',
 		cell: (info) => {
@@ -154,7 +165,27 @@ const columns = [
 		cell: () => {
 			const buttons = [];
 			const roles = auth?.userData?.roles ?? [];
+			const canView = hasPermission(
+				['superadmin', 'admin', 'viewer'],
+				roles,
+			);
 			const canDelete = hasPermission(['superadmin', 'admin'], roles);
+
+			if (canView) {
+				buttons.push(
+					h(
+						'button',
+						{
+							type: 'button',
+							class: 'rounded transition ease-in-out duration-75 bg-sky-500/40 hover:bg-sky-500 text-gray-100 hover:text-gray-50 px-2 py-1 disabled:cursor-not-allowed',
+							title: 'View',
+							disabled: loading.value,
+							onClick: () => {},
+						},
+						h(Icon, { icon: 'heroicons:eye-solid' }),
+					),
+				);
+			}
 
 			if (canDelete) {
 				buttons.push(
@@ -282,7 +313,7 @@ onBeforeMount(async () => {
 			method="post"
 			class="flex flex-wrap items-start gap-4 bg-white p-4 shadow border rounded mb-4"
 		>
-			<div class="flex shrink flex-col justify-center gap-2">
+			<div class="flex grow flex-col justify-center gap-2">
 				<label for="domain" class="text-sm font-semibold text-gray-500"
 					>Domain</label
 				>
@@ -297,7 +328,7 @@ onBeforeMount(async () => {
 				/>
 			</div>
 
-			<div class="flex shrink flex-col justify-center gap-2">
+			<div class="flex grow flex-col justify-center gap-2">
 				<label
 					for="effective_directive"
 					class="text-sm font-semibold text-gray-500"
@@ -310,6 +341,21 @@ onBeforeMount(async () => {
 					maxlength="5"
 					class="border border-gray-300 rounded px-2 py-1 shadow-sm outline-none focus:border-sky-500 focus:ring focus:ring-sky-500 focus:ring-opacity-25 invalid:border-red-500 invalid:focus:border-red-500 invalid:focus:ring-red-500 invalid:focus:ring-opacity-25 bg-white w-full"
 					v-model="searchFormData.effective_directive"
+					:disabled="loading"
+				/>
+			</div>
+
+			<div class="flex grow flex-col justify-center gap-2">
+				<label for="keyword" class="text-sm font-semibold text-gray-500"
+					>Keyword</label
+				>
+				<input
+					type="text"
+					id="keyword"
+					name="keyword"
+					maxlength="150"
+					class="border border-gray-300 rounded px-2 py-1 shadow-sm outline-none focus:border-sky-500 focus:ring focus:ring-sky-500 focus:ring-opacity-25 invalid:border-red-500 invalid:focus:border-red-500 invalid:focus:ring-red-500 invalid:focus:ring-opacity-25 bg-white w-full"
+					v-model="searchFormData.keyword"
 					:disabled="loading"
 				/>
 			</div>
@@ -444,6 +490,7 @@ onBeforeMount(async () => {
 				:class="{
 					'hover:text-gray-600': reports?.prev,
 				}"
+				title="Previous"
 				@click.prevent="handlePagination('prev')"
 				:disabled="loading || !reports?.prev"
 			>
@@ -463,6 +510,7 @@ onBeforeMount(async () => {
 				:class="{
 					'hover:text-gray-600': reports?.next,
 				}"
+				title="Next"
 				@click.prevent="handlePagination('next')"
 				:disabled="loading || !reports?.next"
 			>
