@@ -85,7 +85,7 @@ const handleSubmit = async () => {
 	if (!isChangingPassword.value && !formData.value?.email) {
 		errors.value = {
 			...errors.value,
-			email: ['Por favor, ingrese su email.'],
+			email: ['Please, enter a valid email address.'],
 		};
 	}
 
@@ -186,7 +186,7 @@ const handleEmailChange = (e) => {
 
 	errors.value = {
 		...errors.value,
-		email: ['Please, enter your email.'],
+		email: ['Please, enter a valid email address.'],
 	};
 };
 
@@ -397,7 +397,7 @@ onBeforeMount(() => {
 								:minlength="minPasswordLength"
 								maxlength="255"
 								placeholder="Enter your new password"
-								class="border border-gray-300 rounded px-2 py-1 shadow-sm outline-none focus:border-green-ema focus:ring focus:ring-green-ema focus:ring-opacity-25 invalid:border-red-500 invalid:focus:border-red-500 invalid:focus:ring-red-500 invalid:focus:ring-opacity-25 bg-white w-full"
+								class="border border-gray-300 rounded px-2 py-1 shadow-sm outline-none focus:border-sky-500 focus:ring focus:ring-sky-500 focus:ring-opacity-25 invalid:border-red-500 invalid:focus:border-red-500 invalid:focus:ring-red-500 invalid:focus:ring-opacity-25 bg-white w-full grow"
 								:class="{
 									'border-red-500 focus:border-red-500 focus:ring-red-500':
 										errors?.password,
@@ -419,7 +419,7 @@ onBeforeMount(() => {
 							/>
 							<button
 								type="button"
-								class="bg-gray-ema/20 hover:bg-gray-ema/30 text-gray-500 transition ease-in-out duration-75 p-2 border rounded shrink disabled:cursor-not-allowed"
+								class="bg-gray-400/20 hover:bg-gray-400/30 text-gray-500 transition ease-in-out duration-75 p-2 border rounded shrink disabled:cursor-not-allowed"
 								@click.prevent="handleTogglePassword"
 								:title="
 									showPassword
@@ -567,8 +567,8 @@ onBeforeMount(() => {
 								name="confirm_password"
 								:minlength="minPasswordLength"
 								maxlength="255"
-								placeholder="Confirm your new password"
-								class="border border-gray-300 rounded px-2 py-1 shadow-sm outline-none focus:border-green-ema focus:ring focus:ring-green-ema focus:ring-opacity-25 invalid:border-red-500 invalid:focus:border-red-500 invalid:focus:ring-red-500 invalid:focus:ring-opacity-25 bg-white w-full"
+								placeholder="Enter your new password again"
+								class="border border-gray-300 rounded px-2 py-1 shadow-sm outline-none focus:border-sky-500 focus:ring focus:ring-sky-500 focus:ring-opacity-25 invalid:border-red-500 invalid:focus:border-red-500 invalid:focus:ring-red-500 invalid:focus:ring-opacity-25 bg-white w-full grow"
 								:class="{
 									'border-red-500 focus:border-red-500 focus:ring-red-500':
 										errors?.confirm_password,
@@ -581,7 +581,7 @@ onBeforeMount(() => {
 							/>
 							<button
 								type="button"
-								class="bg-gray-ema/20 hover:bg-gray-ema/30 text-gray-500 transition ease-in-out duration-75 p-2 border rounded shrink disabled:cursor-not-allowed"
+								class="bg-gray-400/20 hover:bg-gray-400/30 text-gray-500 transition ease-in-out duration-75 p-2 border rounded shrink disabled:cursor-not-allowed"
 								@click.prevent="handleToggleConfirmPassword"
 								:title="
 									showConfirmPassword
@@ -631,7 +631,7 @@ onBeforeMount(() => {
 							id="email"
 							name="email"
 							placeholder="Enter your email"
-							class="border border-gray-300 rounded px-2 py-1 shadow-sm outline-none focus:border-green-ema focus:ring focus:ring-green-ema focus:ring-opacity-25 invalid:border-red-500 invalid:focus:border-red-500 invalid:focus:ring-red-500 invalid:focus:ring-opacity-25 bg-white w-full"
+							class="border border-gray-300 rounded px-2 py-1 shadow-sm outline-none focus:border-sky-500 focus:ring focus:ring-sky-500 focus:ring-opacity-25 invalid:border-red-500 invalid:focus:border-red-500 invalid:focus:ring-red-500 invalid:focus:ring-opacity-25 bg-white w-full"
 							:class="{
 								'border-red-500 focus:border-red-500 focus:ring-red-500':
 									errors?.email,

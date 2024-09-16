@@ -36,9 +36,9 @@ const arePreviousStepsValid = (index) => {
 					type="button"
 					class="flex h-10 w-10 shrink-0 items-center justify-center rounded-full cursor-pointer transition ease-in-out duration-75 disabled:bg-gray-300 disabled:text-gray-50 disabled:cursor-not-allowed"
 					:class="{
-						'bg-gray-500 text-gray-50': stepper.isCurrent(id),
+						'bg-gray-400 text-gray-50': stepper.isCurrent(id),
 						'bg-gray-300 text-gray-50': stepper.isBefore(id),
-						'bg-gray-300 text-white': stepper.isAfter(id),
+						'bg-green-500 text-white': stepper.isAfter(id),
 					}"
 					:disabled="
 						!arePreviousStepsValid(i) && stepper.isBefore(id)

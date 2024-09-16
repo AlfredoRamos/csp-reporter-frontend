@@ -255,7 +255,7 @@ const handlePasswordChange = (e) => {
 							class="bg-gray-400/20 hover:bg-gray-400/30 text-gray-500 transition ease-in-out duration-75 p-2 border rounded shrink disabled:cursor-not-allowed"
 							@click.prevent="handleTogglePassword"
 							:title="
-								showPassword ? 'Show password' : 'Hide password'
+								showPassword ? 'Hide password' : 'Show password'
 							"
 							:disabled="loading"
 						>
