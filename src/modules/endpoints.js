@@ -18,6 +18,10 @@ const endpoints = {
 			update: apiPath + '/auth/recover/update',
 		},
 	},
+	activations: {
+		index: apiPath + '/activations/users/all',
+		review: apiPath + '/activations/review/:id',
+	},
 	csp: {
 		reports: {
 			index: apiPath + '/csp/reports/all',
