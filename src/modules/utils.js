@@ -1,4 +1,5 @@
 const defaultLocale = import.meta.env.VITE_LOCALE ?? 'en-US';
+const defaultTimezone = import.meta.env.VITE_TIMEZONE ?? 'UTC';
 
 const isValidUuid = (uuid) => {
 	if (uuid?.length != 36) {
@@ -55,7 +56,7 @@ const formatDateTime = (dateTime, withTime, options) => {
 		year: 'numeric',
 		month: '2-digit',
 		day: '2-digit',
-		timeZone: 'America/Mexico_City',
+		timeZone: defaultTimezone,
 	};
 
 	if (withTime === true) {

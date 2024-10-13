@@ -46,12 +46,33 @@ const router = createRouter({
 			component: () => dashboardRoute(),
 		},
 
+		// Reports
+		{
+			path: '/reports',
+			name: 'reports_index',
+			meta: {
+				title: 'Report list',
+				roles: ['superadmin', 'admin', 'viewer'],
+			},
+			component: () => import('@/views/Admin/Reports/Index.vue'),
+		},
+		{
+			path: '/reports/:id',
+			name: 'reports_get',
+			meta: {
+				title: 'Report',
+				roles: ['superadmin', 'admin', 'viewer'],
+			},
+			component: () => import('@/views/Admin/Reports/Show.vue'),
+		},
+
 		// System
 		{
 			path: '/system',
 			name: 'system',
 			meta: {
 				title: 'System settings',
+				roles: ['superadmin', 'admin'],
 			},
 			component: () => import('@/views/Admin/System/Index.vue'),
 		},
