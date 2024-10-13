@@ -221,7 +221,11 @@ onBeforeMount(() => {
 									Source file
 								</div>
 								<div class="break-all line-clamp-2 font-mono">
-									{{ report?.source_file }}
+									{{
+										report?.source_file
+											? report?.source_file
+											: '---'
+									}}
 								</div>
 							</div>
 							<div
