@@ -81,25 +81,18 @@ onBeforeMount(() => {
 				>
 					<div class="flex flex-col items-start justify-start gap-4">
 						<div
-							class="font-semibold border-b w-full text-left pb-1 whitespace-nowrap"
-						>
-							<Icon
-								icon="heroicons:building-office-2-solid"
-								:inline="true"
-								class="inline-block"
-							/>
-							Site
-						</div>
-						<div
-							class="flex flex-wrap items-center justify-between gap-4 w-full"
+							class="font-semibold border-b w-full text-left pb-1"
 						>
 							<div
-								class="flex flex-col items-start justify-center gap-2"
+								class="flex flex-wrap items-center justify-between"
 							>
-								<div
-									class="text-sm font-semibold text-gray-500"
-								>
-									Report date
+								<div class="whitespace-nowrap">
+									<Icon
+										icon="heroicons:building-office-2-solid"
+										:inline="true"
+										class="inline-block"
+									/>
+									Site
 								</div>
 								<div>
 									{{
@@ -107,15 +100,19 @@ onBeforeMount(() => {
 									}}
 								</div>
 							</div>
+						</div>
+						<div
+							class="grid grid-cols-12 items-start content-start gap-4 w-full"
+						>
 							<div
-								class="flex flex-col items-start justify-center gap-2"
+								class="flex flex-col items-start justify-center gap-2 col-span-6 xl:col-span-3"
 							>
 								<div
 									class="text-sm font-semibold text-gray-500"
 								>
 									Site
 								</div>
-								<div>
+								<div class="break-all line-clamp-2 font-mono">
 									{{ report?.site?.domain
 									}}<template v-if="report?.site?.title"
 										>·
@@ -126,28 +123,188 @@ onBeforeMount(() => {
 								</div>
 							</div>
 							<div
-								class="flex flex-col items-start justify-center gap-2"
+								class="flex flex-col items-start justify-center gap-2 col-span-6 xl:col-span-4"
 							>
 								<div
 									class="text-sm font-semibold text-gray-500"
 								>
 									Document URI
 								</div>
-								<div>
+								<div class="break-all line-clamp-2 font-mono">
 									{{ report?.document_uri }}
 								</div>
 							</div>
 							<div
-								class="flex flex-col items-start justify-center gap-2"
+								class="flex flex-col items-start justify-center gap-2 col-span-6 xl:col-span-4"
 							>
 								<div
 									class="text-sm font-semibold text-gray-500"
 								>
 									Blocked URI
 								</div>
-								<div>
+								<div class="break-all line-clamp-2 font-mono">
 									{{ report?.blocked_uri }}
 								</div>
+							</div>
+							<div
+								class="flex flex-col items-start justify-center gap-2 col-span-6 xl:col-span-1"
+							>
+								<div
+									class="text-sm font-semibold text-gray-500"
+								>
+									Status code
+								</div>
+								<div class="font-mono">
+									{{ report?.status_code }}
+								</div>
+							</div>
+						</div>
+						<div
+							class="grid grid-cols-12 items-start content-start gap-4 w-full"
+						>
+							<div
+								class="flex flex-col items-start justify-center gap-2 col-span-6 xl:col-span-2"
+							>
+								<div
+									class="text-sm font-semibold text-gray-500"
+								>
+									Effective directive
+								</div>
+								<div class="break-all line-clamp-2 font-mono">
+									{{
+										report?.effective_directive
+											? report?.effective_directive
+											: '---'
+									}}
+								</div>
+							</div>
+							<div
+								class="flex flex-col items-start justify-center gap-2 col-span-6 xl:col-span-5"
+							>
+								<div
+									class="text-sm font-semibold text-gray-500"
+								>
+									Violated directive
+								</div>
+								<div class="break-all line-clamp-2 font-mono">
+									{{ report?.violated_directive }}
+								</div>
+							</div>
+							<div
+								class="flex flex-col items-start justify-center gap-2 col-span-6 xl:col-span-4"
+							>
+								<div
+									class="text-sm font-semibold text-gray-500"
+								>
+									Referrer
+								</div>
+								<div class="break-all line-clamp-2 font-mono">
+									{{
+										report?.referrer
+											? report?.referrer
+											: '---'
+									}}
+								</div>
+							</div>
+						</div>
+						<div
+							class="grid grid-cols-12 items-start content-start gap-4 w-full"
+						>
+							<div
+								class="flex flex-col items-start justify-center gap-2 col-span-6 xl:col-span-4"
+							>
+								<div
+									class="text-sm font-semibold text-gray-500"
+								>
+									Source file
+								</div>
+								<div class="break-all line-clamp-2 font-mono">
+									{{ report?.source_file }}
+								</div>
+							</div>
+							<div
+								class="flex flex-col items-start justify-center gap-2 col-span-3 xl:col-span-1"
+							>
+								<div
+									class="text-sm font-semibold text-gray-500"
+								>
+									Line number
+								</div>
+								<div class="font-mono">
+									{{
+										report?.line_number
+											? report?.line_number
+											: '---'
+									}}
+								</div>
+							</div>
+							<div
+								class="flex flex-col items-start justify-center gap-2 col-span-3 xl:col-span-1"
+							>
+								<div
+									class="text-sm font-semibold text-gray-500"
+								>
+									Column number
+								</div>
+								<div class="font-mono">
+									{{
+										report?.column_number
+											? report?.column_number
+											: '---'
+									}}
+								</div>
+							</div>
+							<div
+								class="flex flex-col items-start justify-center gap-2 col-span-6 xl:col-span-4"
+							>
+								<div
+									class="text-sm font-semibold text-gray-500"
+								>
+									Script sample
+								</div>
+								<code
+									v-if="report?.script_sample"
+									class="break-all line-clamp-2 text-sm font-mono bg-gray-100 border p-1 rounded w-full"
+								>
+									{{ report?.script_sample }}
+								</code>
+								<div v-else class="font-mono">---</div>
+							</div>
+							<div
+								class="flex flex-col items-start justify-center gap-2 col-span-6 xl:col-span-2"
+							>
+								<div
+									class="text-sm font-semibold text-gray-500"
+								>
+									Disposition
+								</div>
+								<div class="break-all line-clamp-2 font-mono">
+									{{
+										report?.disposition
+											? report?.disposition
+											: '---'
+									}}
+								</div>
+							</div>
+						</div>
+						<div
+							class="grid grid-cols-12 items-start content-start gap-4 w-full"
+						>
+							<div
+								class="flex flex-col items-start justify-center gap-2 col-span-12"
+							>
+								<div
+									class="text-sm font-semibold text-gray-500"
+								>
+									Original policy
+								</div>
+								<code
+									v-if="report?.original_policy"
+									class="break-all text-sm font-mono bg-gray-100 border p-1 rounded w-full"
+								>
+									{{ report?.original_policy }}
+								</code>
+								<div v-else class="font-mono">---</div>
 							</div>
 						</div>
 					</div>
