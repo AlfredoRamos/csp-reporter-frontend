@@ -47,6 +47,34 @@ const roles = auth?.userData?.roles ?? [];
 						>Home</span
 					>
 				</RouterLink>
+				<template
+					v-if="
+						hasPermission(['superadmin', 'admin', 'viewer'], roles)
+					"
+				>
+					<RouterLink
+						:to="{ name: 'reports_index' }"
+						class="truncate px-2 py-1 rounded transition ease-in-out duration-75 hover:bg-sky-700/70 text-gray-50 whitespace-nowrap"
+						active-class="bg-sky-700/70"
+						title="Reports"
+					>
+						<Icon
+							icon="heroicons:clipboard-document-list-solid"
+							:inline="true"
+							class="inline-block"
+						/>
+						<span
+							:class="{
+								'hidden group-hover/sidebar:inline-block group-hover/sidebar:ml-1':
+									navbarToggle.getState === 'auto',
+								'inline-block ml-1':
+									navbarToggle.getState === 'open',
+								hidden: navbarToggle.getState === 'close',
+							}"
+							>Reports</span
+						>
+					</RouterLink>
+				</template>
 				<template v-if="hasPermission(['superadmin', 'admin'], roles)">
 					<RouterLink
 						:to="{ name: 'admin_users_review' }"

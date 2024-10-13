@@ -25,6 +25,7 @@ const endpoints = {
 	csp: {
 		reports: {
 			index: apiPath + '/csp/reports/all',
+			get: apiPath + '/csp/reports/get/:id',
 		},
 	},
 };
