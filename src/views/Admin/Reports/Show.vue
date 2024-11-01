@@ -1,6 +1,6 @@
 <script setup>
 import { ref, onBeforeMount, inject, computed } from 'vue';
-import { useRoute, useRouter, RouterLink } from 'vue-router';
+import { useRoute, RouterLink } from 'vue-router';
 import { Icon } from '@iconify/vue';
 import { useAuthStore } from '@/stores/auth';
 import Authenticated from '@/layouts/Authenticated.vue';
@@ -9,7 +9,6 @@ import endpoints from '@/modules/endpoints';
 import { formatDateTime, isValidUuid } from '@/modules/utils';
 
 const http = inject('http');
-const router = useRouter();
 const route = useRoute();
 const auth = useAuthStore();
 const loading = ref(false);
@@ -45,11 +44,7 @@ const loadReport = () => {
 };
 
 onBeforeMount(() => {
-	if (!auth?.accessToken) {
-		auth?.clean();
-		router.push({ name: 'auth_login' });
-		return;
-	}
+	auth?.guard();
 
 	if (!isValid.value) {
 		return;

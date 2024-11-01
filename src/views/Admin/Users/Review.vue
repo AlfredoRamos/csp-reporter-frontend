@@ -1,6 +1,5 @@
 <script setup>
 import { ref, computed, inject, h, onBeforeMount } from 'vue';
-import { useRouter } from 'vue-router';
 import { Icon } from '@iconify/vue';
 import {
 	useVueTable,
@@ -18,7 +17,6 @@ import { isValidUuid } from '@/modules/utils';
 import { hasPermission } from '@/modules/auth';
 
 const http = inject('http');
-const router = useRouter();
 const auth = useAuthStore();
 const loading = ref(false);
 const sorting = ref([]);
@@ -348,11 +346,7 @@ const loadUsers = () => {
 };
 
 onBeforeMount(() => {
-	if (!auth?.accessToken) {
-		auth?.clean();
-		router.push({ name: 'auth_login' });
-		return;
-	}
+	auth?.guard();
 
 	loadUsers();
 });
