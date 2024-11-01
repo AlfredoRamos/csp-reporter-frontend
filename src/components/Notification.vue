@@ -1,5 +1,5 @@
 <script setup>
-import { ref, onMounted } from 'vue';
+import { ref } from 'vue';
 import { Icon } from '@iconify/vue';
 
 const props = defineProps({
@@ -19,36 +19,22 @@ const props = defineProps({
 		type: String,
 	},
 });
-const emit = defineEmits(['close']);
+const emit = defineEmits(['close', 'enter', 'leave']);
 
 const open = ref(true);
-let timeout = null;
 
 const handleClose = () => {
 	open.value = false;
 	emit('close');
 };
 
-const handleDismiss = () => {
-	clearTimeout(timeout);
-
-	timeout = setTimeout(() => {
-		open.value = false;
-		emit('close');
-	}, 5000);
-};
-
 const handleHoverEnter = () => {
-	clearTimeout(timeout);
+	emit('enter');
 };
 
 const handleHoverLeave = () => {
-	handleDismiss();
+	emit('leave');
 };
-
-onMounted(() => {
-	handleDismiss();
-});
 </script>
 
 <template>

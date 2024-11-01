@@ -14,6 +14,7 @@ import Notification from '@/components/Notification.vue';
 import Alert from '@/components/Alert.vue';
 import HCaptchaBadge from '@/components/HCaptchaBadge.vue';
 import endpoints from '@/modules/endpoints';
+import { useNotification } from '@/composables/notification';
 
 const defaultTitle = import.meta.env.VITE_APP_TITLE ?? '';
 const defaultDescription = import.meta.env.VITE_APP_DESC ?? '';
@@ -62,7 +63,13 @@ const formData = ref({
 	confirm_password: null,
 	accept_privacy_policy: false,
 });
-const notifications = ref([]);
+const {
+	notifications,
+	addNotification,
+	removeNotification,
+	pauseNotification,
+	resumeNotification,
+} = useNotification();
 const errors = ref({});
 const hCaptchaWidget = ref(null);
 
@@ -163,7 +170,7 @@ const handleUserAccount = async () => {
 			const errs = error?.response?.data?.error;
 
 			if (Array.isArray(errs)) {
-				notifications.value?.push({
+				addNotification({
 					type: 'error',
 					title: 'Error creating user account',
 					message: errs?.join('\n'),
@@ -823,10 +830,13 @@ const handleToggleConfirmPassword = (e) => {
 
 	<NotificationArea>
 		<Notification
-			v-for="(notification, index) in notifications ?? []"
-			:key="index"
+			v-for="notification in notifications ?? []"
+			:key="notification?.id"
 			:type="notification?.type"
 			:title="notification?.title"
+			@close="removeNotification(notification?.id)"
+			@enter="pauseNotification(notification?.id)"
+			@leave="resumeNotification(notification?.id)"
 			>{{ notification?.message }}</Notification
 		>
 	</NotificationArea>

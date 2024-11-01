@@ -13,15 +13,22 @@ import Modal from '@/components/Modal.vue';
 import NotificationArea from '@/components/NotificationArea.vue';
 import Notification from '@/components/Notification.vue';
 import endpoints from '@/modules/endpoints';
-import { isValidUuid } from '@/modules/utils';
+import { isValidUuidv4 } from '@/modules/utils';
 import { hasPermission } from '@/modules/auth';
+import { useNotification } from '@/composables/notification';
 
 const http = inject('http');
 const auth = useAuthStore();
 const loading = ref(false);
 const sorting = ref([]);
 const errors = ref({});
-const notifications = ref([]);
+const {
+	notifications,
+	addNotification,
+	removeNotification,
+	pauseNotification,
+	resumeNotification,
+} = useNotification();
 const formData = ref({
 	user: {
 		id: null,
@@ -62,8 +69,8 @@ const resetModalData = () => {
 };
 
 const handleUserReview = (user, aprove) => {
-	if (!isValidUuid(user?.id)) {
-		notifications.value?.push({
+	if (!isValidUuidv4(user?.id)) {
+		addNotification({
 			type: 'warning',
 			title: 'Invalid selection',
 			message: 'The user selection is invalid.',
@@ -78,8 +85,8 @@ const handleUserReview = (user, aprove) => {
 };
 
 const handleModalUserAccept = () => {
-	if (!isValidUuid(formData.value?.user?.id)) {
-		notifications.value?.push({
+	if (!isValidUuidv4(formData.value?.user?.id)) {
+		addNotification({
 			type: 'error',
 			title: 'Invalid user information',
 			message: 'The user selection is invalid.',
@@ -118,7 +125,7 @@ const handleModalUserAccept = () => {
 		.then(() => {
 			const status = formData.value?.approved ? 'approved' : 'denied';
 
-			notifications.value?.push({
+			addNotification({
 				type: 'success',
 				title: 'User reviewed succesfully',
 				message: `The user has been ${status} succesfully.`,
@@ -127,7 +134,7 @@ const handleModalUserAccept = () => {
 			loadUsers();
 		})
 		.catch((error) => {
-			notifications.value?.push({
+			addNotification({
 				type: 'error',
 				title: 'User review failed',
 				message: error?.response?.data?.error?.join('\n'),
@@ -553,10 +560,13 @@ onBeforeMount(() => {
 
 	<NotificationArea>
 		<Notification
-			v-for="(notification, index) in notifications"
-			:key="index"
+			v-for="notification in notifications ?? []"
+			:key="notification?.id"
 			:type="notification?.type"
 			:title="notification?.title"
+			@close="removeNotification(notification?.id)"
+			@enter="pauseNotification(notification?.id)"
+			@leave="resumeNotification(notification?.id)"
 			>{{ notification?.message }}</Notification
 		>
 	</NotificationArea>

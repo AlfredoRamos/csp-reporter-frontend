@@ -1,15 +1,14 @@
+import { version as uuidVersion, validate as uuidValidate } from 'uuid';
+
 const defaultLocale = import.meta.env.VITE_LOCALE ?? 'en-US';
 const defaultTimezone = import.meta.env.VITE_TIMEZONE ?? 'UTC';
 
-const isValidUuid = (uuid) => {
-	if (uuid?.length != 36) {
-		return false;
-	}
+const isValidUuidv4 = (uuid) => {
+	return uuidValidate(uuid) && uuidVersion(uuid) === 4;
+};
 
-	const uuidRegexp =
-		/^[0-9a-f]{8}-[0-9a-f]{4}-[0-5][0-9a-f]{3}-[089ab][0-9a-f]{3}-[0-9a-f]{12}$/i;
-
-	return uuidRegexp.test(uuid);
+const isValidUuidv7 = (uuid) => {
+	return uuidValidate(uuid) && uuidVersion(uuid) === 7;
 };
 
 const formatNumber = (number, options) => {
@@ -74,7 +73,7 @@ const formatDateTime = (dateTime, withTime, options) => {
 };
 
 const findIdIndex = (list, id) => {
-	if (!Array.isArray(list) || !isValidUuid(id)) {
+	if (!Array.isArray(list) || !isValidUuidv4(id)) {
 		return -1;
 	}
 
@@ -82,7 +81,7 @@ const findIdIndex = (list, id) => {
 };
 
 const findIdObjectIndex = (list, id) => {
-	if (!Array.isArray(list) || !isValidUuid(id)) {
+	if (!Array.isArray(list) || !isValidUuidv4(id)) {
 		return -1;
 	}
 
@@ -92,7 +91,7 @@ const findIdObjectIndex = (list, id) => {
 };
 
 const findIdItem = (list, id) => {
-	if (!Array.isArray(list) || !isValidUuid(id)) {
+	if (!Array.isArray(list) || !isValidUuidv4(id)) {
 		return null;
 	}
 
@@ -226,12 +225,13 @@ const extname = (path) => {
 	return basename(path)?.split('.').reverse()?.[0];
 };
 
-function isValidDate(d) {
+const isValidDate = (d) => {
 	return d instanceof Date && !isNaN(d);
-}
+};
 
 export {
-	isValidUuid,
+	isValidUuidv4,
+	isValidUuidv7,
 	formatNumber,
 	formatCurrency,
 	formatDateTime,

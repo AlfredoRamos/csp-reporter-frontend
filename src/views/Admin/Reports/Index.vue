@@ -16,13 +16,20 @@ import Modal from '@/components/Modal.vue';
 import endpoints from '@/modules/endpoints';
 import { formatDateTime } from '@/modules/utils';
 import { hasPermission } from '@/modules/auth';
+import { useNotification } from '@/composables/notification';
 
 const router = useRouter();
 const http = inject('http');
 const auth = useAuthStore();
 const loading = ref(false);
-const notifications = ref([]);
 const sorting = ref([]);
+const {
+	notifications,
+	addNotification,
+	removeNotification,
+	pauseNotification,
+	resumeNotification,
+} = useNotification();
 const modalReport = ref(null);
 const modalReportType = ref(null);
 const reports = ref({});
@@ -83,7 +90,7 @@ const handleSearch = (e) => {
 			const errorList = error?.response?.data?.error ?? [];
 
 			if (errorList?.length > 0) {
-				notifications.value?.push({
+				addNotification({
 					type: 'error',
 					title: 'Error searching CSP reports',
 					message: errorList?.join('\n'),
@@ -549,10 +556,13 @@ onBeforeMount(async () => {
 
 	<NotificationArea>
 		<Notification
-			v-for="(notification, index) in notifications"
-			:key="index"
+			v-for="notification in notifications ?? []"
+			:key="notification?.id"
 			:type="notification?.type"
 			:title="notification?.title"
+			@close="removeNotification(notification?.id)"
+			@enter="pauseNotification(notification?.id)"
+			@leave="resumeNotification(notification?.id)"
 			>{{ notification?.message }}</Notification
 		>
 	</NotificationArea>

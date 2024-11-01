@@ -14,6 +14,7 @@ import Alert from '@/components/Alert.vue';
 import HCaptchaBadge from '@/components/HCaptchaBadge.vue';
 import { useAuthStore } from '@/stores/auth';
 import endpoints from '@/modules/endpoints';
+import { useNotification } from '@/composables/notification';
 
 const minPasswordLength = import.meta.env.VITE_MIN_PASSWORD_LENGTH ?? 10;
 
@@ -47,7 +48,13 @@ const formData = ref({
 	confirm_password: null,
 });
 const errors = ref({});
-const notifications = ref([]);
+const {
+	notifications,
+	addNotification,
+	removeNotification,
+	pauseNotification,
+	resumeNotification,
+} = useNotification();
 const hCaptchaWidget = ref(null);
 const notified = ref(false);
 const isChangingPassword = ref(false);
@@ -158,7 +165,7 @@ const handleSubmit = async () => {
 			const errs = error?.response?.data?.error;
 
 			if (Array.isArray(errs)) {
-				notifications.value?.push({
+				addNotification({
 					type: 'error',
 					title: 'Error reseting password',
 					message: errs?.join('\n'),
@@ -764,10 +771,13 @@ onBeforeMount(() => {
 
 	<NotificationArea>
 		<Notification
-			v-for="(notification, index) in notifications"
-			:key="index"
+			v-for="notification in notifications ?? []"
+			:key="notification?.id"
 			:type="notification?.type"
 			:title="notification?.title"
+			@close="removeNotification(notification?.id)"
+			@enter="pauseNotification(notification?.id)"
+			@leave="resumeNotification(notification?.id)"
 			>{{ notification?.message }}</Notification
 		>
 	</NotificationArea>
