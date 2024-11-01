@@ -6,19 +6,19 @@ import { useAuthStore } from '@/stores/auth';
 import Authenticated from '@/layouts/Authenticated.vue';
 import Alert from '@/components/Alert.vue';
 import endpoints from '@/modules/endpoints';
-import { formatDateTime, isValidUuid } from '@/modules/utils';
+import { formatDateTime, isValidUuidv4 } from '@/modules/utils';
 
 const http = inject('http');
 const route = useRoute();
 const auth = useAuthStore();
 const loading = ref(false);
 const isValid = computed(() => {
-	return isValidUuid(route?.params?.id);
+	return isValidUuidv4(route?.params?.id);
 });
 const report = ref({});
 
 const loadReport = () => {
-	if (!isValidUuid(route?.params?.id)) {
+	if (!isValidUuidv4(route?.params?.id)) {
 		return;
 	}
 

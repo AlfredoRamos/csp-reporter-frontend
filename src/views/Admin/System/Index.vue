@@ -6,11 +6,18 @@ import NotificationArea from '@/components/NotificationArea.vue';
 import Notification from '@/components/Notification.vue';
 import { useAuthStore } from '@/stores/auth';
 import endpoints from '@/modules/endpoints';
+import { useNotification } from '@/composables/notification';
 
 const http = inject('http');
 const auth = useAuthStore();
 const loading = ref(false);
-const notifications = ref([]);
+const {
+	notifications,
+	addNotification,
+	removeNotification,
+	pauseNotification,
+	resumeNotification,
+} = useNotification();
 
 const handleCachePurge = () => {
 	loading.value = true;
@@ -24,14 +31,14 @@ const handleCachePurge = () => {
 		},
 	)
 		.then(() => {
-			notifications.value?.push({
+			addNotification({
 				type: 'success',
 				title: 'Cache purge successful',
 				message: 'The cache has been purged successfully.',
 			});
 		})
 		.catch((error) => {
-			notifications.value?.push({
+			addNotification({
 				type: 'error',
 				title: 'Cache purge failed',
 				message: error?.response?.data?.error?.join('\n'),
@@ -68,10 +75,13 @@ onBeforeMount(() => {
 
 	<NotificationArea>
 		<Notification
-			v-for="(notification, index) in notifications"
-			:key="index"
+			v-for="notification in notifications ?? []"
+			:key="notification?.id"
 			:type="notification?.type"
 			:title="notification?.title"
+			@close="removeNotification(notification?.id)"
+			@enter="pauseNotification(notification?.id)"
+			@leave="resumeNotification(notification?.id)"
 			>{{ notification?.message }}</Notification
 		>
 	</NotificationArea>

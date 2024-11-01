@@ -1,5 +1,5 @@
 import { importJWK, compactDecrypt, compactVerify } from 'jose';
-import { isValidUuid } from '@/modules/utils';
+import { isValidUuidv4 } from '@/modules/utils';
 import encPrivKeyJson from '@/../keys/encryption-private.json';
 import signPubKeyJson from '@/../keys/signing-public.json';
 
@@ -52,7 +52,7 @@ const validateAccessToken = async (token) => {
 
 	const now = new Date();
 	const isJwtValid =
-		isValidUuid(jwt?.sub) &&
+		isValidUuidv4(jwt?.sub) &&
 		jwt?.sub === jwt?.user?.id &&
 		now.getTime() >= new Date(jwt?.nbf * 1000)?.getTime() &&
 		now.getTime() >= new Date(jwt?.iat * 1000)?.getTime() &&

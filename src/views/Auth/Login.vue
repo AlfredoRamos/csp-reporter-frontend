@@ -10,6 +10,7 @@ import HCaptchaBadge from '@/components/HCaptchaBadge.vue';
 import endpoints from '@/modules/endpoints';
 import { useAuthStore } from '@/stores/auth';
 import { validateAccessToken } from '@/modules/auth';
+import { useNotification } from '@/composables/notification';
 
 const defaultTitle = import.meta.env.VITE_APP_TITLE ?? '';
 const defaultDescription = import.meta.env.VITE_APP_DESC ?? '';
@@ -24,6 +25,13 @@ const http = inject('http');
 const router = useRouter();
 const auth = useAuthStore();
 const loading = ref(false);
+const {
+	notifications,
+	addNotification,
+	removeNotification,
+	pauseNotification,
+	resumeNotification,
+} = useNotification();
 const showPassword = ref(false);
 const passwordFieldType = computed(() => {
 	return showPassword.value === true ? 'text' : 'password';
@@ -95,7 +103,7 @@ const handleSubmit = async (e) => {
 			const token = response?.data?.access_token ?? null;
 
 			if (!validateAccessToken(token)) {
-				errors.value.global.push({
+				addNotification({
 					type: 'error',
 					title: 'Error loggin in',
 					message: 'The access credentials are invalid.',
@@ -116,7 +124,7 @@ const handleSubmit = async (e) => {
 				errors.value = { ...errors.value, global: [] };
 			}
 
-			errors.value.global.push({
+			addNotification({
 				type: 'error',
 				title: 'Error loggin in',
 				message: msg,
@@ -347,12 +355,15 @@ const handlePasswordChange = (e) => {
 		<HCaptchaBadge />
 	</Guest>
 
-	<NotificationArea v-if="(errors?.global ?? [])?.length > 0">
+	<NotificationArea>
 		<Notification
-			v-for="(notification, index) in errors?.global ?? []"
-			:key="index"
+			v-for="notification in notifications ?? []"
+			:key="notification?.id"
 			:type="notification?.type"
 			:title="notification?.title"
+			@close="removeNotification(notification?.id)"
+			@enter="pauseNotification(notification?.id)"
+			@leave="resumeNotification(notification?.id)"
 			>{{ notification?.message }}</Notification
 		>
 	</NotificationArea>

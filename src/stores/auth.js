@@ -3,7 +3,7 @@ import { computed } from 'vue';
 import { useStorage } from '@vueuse/core';
 import { useRouter } from 'vue-router';
 import { parseAccessToken } from '@/modules/auth';
-import { isValidUuid } from '@/modules/utils';
+import { isValidUuidv4 } from '@/modules/utils';
 
 export const useAuthStore = defineStore('auth', () => {
 	const router = useRouter();
@@ -44,7 +44,7 @@ export const useAuthStore = defineStore('auth', () => {
 			!accessToken.value ||
 			now > data?.exp ||
 			now < data?.nbf ||
-			!isValidUuid(data?.user?.id)
+			!isValidUuidv4(data?.user?.id)
 		) {
 			clean();
 			router.push({ name: 'auth_login' });
