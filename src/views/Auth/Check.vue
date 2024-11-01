@@ -17,11 +17,7 @@ const loading = ref(true);
 const errors = ref([]);
 
 onBeforeMount(() => {
-	if (!auth?.accessToken) {
-		auth?.clean();
-		router.push({ name: 'auth_login' });
-		return;
-	}
+	auth?.guard();
 
 	loading.value = true;
 	http.post(endpoints?.auth?.check, null, {

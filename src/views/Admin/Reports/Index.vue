@@ -317,11 +317,7 @@ const loadCSPReports = () => {
 };
 
 onBeforeMount(async () => {
-	if (!auth?.accessToken) {
-		auth?.clean();
-		router.push({ name: 'auth_login' });
-		return;
-	}
+	auth?.guard();
 
 	loadCSPReports();
 });
