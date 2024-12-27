@@ -1,12 +1,10 @@
 import { defineStore } from 'pinia';
 import { computed } from 'vue';
 import { useStorage } from '@vueuse/core';
-import { useRouter } from 'vue-router';
 import { parseAccessToken } from '@/modules/auth';
 import { isValidUuidv4 } from '@/modules/utils';
 
 export const useAuthStore = defineStore('auth', () => {
-	const router = useRouter();
 	const token = useStorage('access_token', null);
 	const user = useStorage('user', null);
 
@@ -37,18 +35,25 @@ export const useAuthStore = defineStore('auth', () => {
 	};
 
 	const guard = async () => {
+		if (!accessToken.value) {
+			clean();
+			return Promise.reject('Invalid access token.');
+		}
+
 		const data = await parseAccessToken(accessToken.value);
 		const now = Math.round(new Date()?.getTime() / 1000);
 
 		if (
-			!accessToken.value ||
+			!data ||
 			now > data?.exp ||
 			now < data?.nbf ||
 			!isValidUuidv4(data?.user?.id)
 		) {
 			clean();
-			router.push({ name: 'auth_login' });
+			return Promise.reject('Invalid user data.');
 		}
+
+		return accessToken.value;
 	};
 
 	return { accessToken, setAccessToken, userData, clean, guard };

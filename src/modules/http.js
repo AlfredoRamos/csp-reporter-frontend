@@ -54,7 +54,6 @@ const permissionsErrorMiddleware = (error) => {
 		window.localStorage.removeItem('access_token');
 		window.localStorage.removeItem('user');
 		window.localStorage.removeItem('csrf');
-		window.location.reload();
 	}
 
 	return Promise.reject(error);

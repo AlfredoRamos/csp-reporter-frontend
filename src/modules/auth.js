@@ -4,10 +4,10 @@ import encPrivKeyJson from '@/../keys/encryption-private.json';
 import signPubKeyJson from '@/../keys/signing-public.json';
 
 const parseAccessToken = async (token) => {
-	token = token?.toString()?.trim();
+	token = token?.toString()?.trim() ?? null;
 
-	if (token?.length < 1) {
-		console.warn('Empty access token.');
+	if (!token || token?.length < 1) {
+		console.error('Empty access token.');
 		return null;
 	}
 

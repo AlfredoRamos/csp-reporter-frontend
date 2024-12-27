@@ -36,6 +36,7 @@ const loadReport = () => {
 
 			if (Array.isArray(errs)) {
 				console.error(errs?.join('\n'));
+				return;
 			}
 		})
 		.finally(() => {
