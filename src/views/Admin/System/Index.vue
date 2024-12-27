@@ -1,5 +1,6 @@
 <script setup>
 import { ref, onBeforeMount, inject } from 'vue';
+import { useRouter } from 'vue-router';
 import { Icon } from '@iconify/vue';
 import Authenticated from '@/layouts/Authenticated.vue';
 import NotificationArea from '@/components/NotificationArea.vue';
@@ -9,6 +10,7 @@ import endpoints from '@/modules/endpoints';
 import { useNotification } from '@/composables/notification';
 
 const http = inject('http');
+const router = useRouter();
 const auth = useAuthStore();
 const loading = ref(false);
 const {
@@ -50,7 +52,10 @@ const handleCachePurge = () => {
 };
 
 onBeforeMount(() => {
-	auth?.guard();
+	auth?.guard().catch(() => {
+		router.push({ name: 'auth_login' });
+		return;
+	});
 });
 </script>
 

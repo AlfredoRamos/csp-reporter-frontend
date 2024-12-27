@@ -136,7 +136,7 @@ const rangeToList = (str) => {
 		last = Math.abs(last);
 
 		if (Math.abs(last - first) >= 1000) {
-			console.warn('Trying to generate a large list of numbers.');
+			console.error('Trying to generate a large list of numbers.');
 		}
 
 		for (let i = first; i <= last; i++) {

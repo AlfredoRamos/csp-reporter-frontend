@@ -170,6 +170,7 @@ const handleSubmit = async () => {
 					title: 'Error reseting password',
 					message: errs?.join('\n'),
 				});
+				return;
 			}
 
 			errors.value = errs ?? {};

@@ -175,6 +175,7 @@ const handleUserAccount = async () => {
 					title: 'Error creating user account',
 					message: errs?.join('\n'),
 				});
+				return;
 			}
 
 			errors.value = errs ?? {};

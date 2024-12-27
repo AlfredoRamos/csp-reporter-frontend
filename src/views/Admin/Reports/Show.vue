@@ -1,6 +1,6 @@
 <script setup>
 import { ref, onBeforeMount, inject, computed } from 'vue';
-import { useRoute, RouterLink } from 'vue-router';
+import { useRoute, useRouter, RouterLink } from 'vue-router';
 import { Icon } from '@iconify/vue';
 import { useAuthStore } from '@/stores/auth';
 import Authenticated from '@/layouts/Authenticated.vue';
@@ -9,6 +9,7 @@ import endpoints from '@/modules/endpoints';
 import { formatDateTime, isValidUuidv4 } from '@/modules/utils';
 
 const http = inject('http');
+const router = useRouter();
 const route = useRoute();
 const auth = useAuthStore();
 const loading = ref(false);
@@ -36,6 +37,7 @@ const loadReport = () => {
 
 			if (Array.isArray(errs)) {
 				console.error(errs?.join('\n'));
+				return;
 			}
 		})
 		.finally(() => {
@@ -44,13 +46,18 @@ const loadReport = () => {
 };
 
 onBeforeMount(() => {
-	auth?.guard();
+	auth?.guard()
+		.then(() => {
+			if (!isValid.value) {
+				return;
+			}
 
-	if (!isValid.value) {
-		return;
-	}
-
-	loadReport();
+			loadReport();
+		})
+		.catch(() => {
+			router.push({ name: 'auth_login' });
+			return;
+		});
 });
 </script>
 

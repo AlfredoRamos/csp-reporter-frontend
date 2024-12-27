@@ -116,19 +116,18 @@ const handleSubmit = async (e) => {
 			router.push({ name: 'auth_check' });
 		})
 		.catch((error) => {
-			const msg =
-				error?.response?.data?.error?.join('\n') ??
-				'The access credentials are invalid.';
+			const errs = error?.response?.data?.error ?? ['Internal error.'];
 
-			if (!errors.value?.global) {
-				errors.value = { ...errors.value, global: [] };
+			if (Array.isArray(errs)) {
+				addNotification({
+					type: 'error',
+					title: 'Error loggin in',
+					message: errs?.join('\n'),
+				});
+				return;
 			}
 
-			addNotification({
-				type: 'error',
-				title: 'Error loggin in',
-				message: msg,
-			});
+			errors.value = errs ?? {};
 		})
 		.finally(() => {
 			formData.value = { ...formData.value, password: null };

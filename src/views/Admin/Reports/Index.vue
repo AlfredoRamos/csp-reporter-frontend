@@ -18,8 +18,8 @@ import { formatDateTime } from '@/modules/utils';
 import { hasPermission } from '@/modules/auth';
 import { useNotification } from '@/composables/notification';
 
-const router = useRouter();
 const http = inject('http');
+const router = useRouter();
 const auth = useAuthStore();
 const loading = ref(false);
 const sorting = ref([]);
@@ -324,9 +324,14 @@ const loadCSPReports = () => {
 };
 
 onBeforeMount(async () => {
-	auth?.guard();
-
-	loadCSPReports();
+	auth?.guard()
+		.then(() => {
+			loadCSPReports();
+		})
+		.catch(() => {
+			router.push({ name: 'auth_login' });
+			return;
+		});
 });
 </script>
 

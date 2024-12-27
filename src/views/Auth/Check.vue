@@ -16,32 +16,43 @@ const auth = useAuthStore();
 const loading = ref(true);
 const errors = ref([]);
 
-onBeforeMount(() => {
-	auth?.guard();
-
-	loading.value = true;
-	http.post(endpoints?.auth?.check, null, {
-		headers: {
-			Authorization: `Bearer ${auth?.accessToken}`,
-		},
-	})
-		.then((response) => {
-			if (response?.status === 200) {
-				window.location.href = new URL(
-					router.resolve({ name: 'home' })?.href,
-					window.location.origin,
-				)?.href;
-			}
+onBeforeMount(async () => {
+	auth?.guard()
+		.then((token) => {
+			loading.value = true;
+			http.post(endpoints?.auth?.check, null, {
+				headers: {
+					Authorization: `Bearer ${token}`,
+				},
+			})
+				.then((response) => {
+					if (response?.status === 200) {
+						window.location.href = new URL(
+							router.resolve({ name: 'home' })?.href,
+							window.location.origin,
+						)?.href;
+					}
+				})
+				.catch((error) => {
+					errors.value = error?.response?.data?.error ?? [
+						'Internal error.',
+					];
+					auth?.clean();
+					setTimeout(() => {
+						router.push({ name: 'auth_login' });
+					}, 5000);
+				})
+				.finally(() => {
+					loading.value = false;
+				});
 		})
 		.catch((error) => {
-			errors.value = error?.response?.data?.error ?? [];
-			auth?.clean();
-			setTimeout(() => {
-				router.go();
-			}, 3000);
-		})
-		.finally(() => {
 			loading.value = false;
+			errors.value = [error];
+			setTimeout(() => {
+				router.push({ name: 'auth_login' });
+			}, 5000);
+			return;
 		});
 });
 </script>
@@ -58,13 +69,26 @@ onBeforeMount(() => {
 				</h1>
 				<p v-if="loading">Please wait while we verify your session.</p>
 			</div>
-			<Alert
-				v-if="errors?.length > 0"
-				type="error"
-				title="Error logging in"
-				:narrow="false"
-				>{{ errors?.join('\n') }}</Alert
-			>
+			<template v-if="errors?.length > 0">
+				<Alert type="error" title="Error logging in" :narrow="false">{{
+					errors?.join('\n')
+				}}</Alert>
+
+				<div class="text-gray-600 leading-normal text-center">
+					You will be redirected automatically to the login page.
+				</div>
+				<RouterLink
+					:to="{ name: 'auth_login' }"
+					class="whitespace-nowrap bg-green-600 hover:bg-green-600/70 text-gray-50 hover:text-white transition ease-in-out duration-75 px-2 py-1 rounded w-fit mx-auto"
+				>
+					<Icon
+						icon="heroicons:arrow-left-on-rectangle-solid"
+						:inline="true"
+						class="inline-block mr-1"
+					/>
+					Log in
+				</RouterLink>
+			</template>
 			<div
 				v-if="loading"
 				class="flex flex-col items-center justify-center gap-2 w-full"
