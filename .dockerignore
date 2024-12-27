@@ -1,0 +1,27 @@
+# Common
+**/.vscode
+**/.git*
+**/.editorconfig
+**/*.md
+**/*.env*
+**/*.sql*
+**/*.pem
+**/*.key
+**/*.pub
+**/*.crt
+**/*.cer
+**/*.cert
+**/*.dockerfile
+**/Dockerfile
+
+# Frontend
+**/node_modules
+**/dist
+**/.prettierrc.json
+**/.eslintrc.cjs
+**/.tool-versions
+
+# Exceptions
+!.env
+!keys/encryption-private.json
+!keys/signing-public.json
