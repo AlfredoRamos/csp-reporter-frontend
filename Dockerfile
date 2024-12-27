@@ -5,6 +5,9 @@ ARG NODE_VERSION=23.5-alpine
 FROM node:${NODE_VERSION} AS frontend-build
 LABEL org.opencontainers.image.authors="Alfredo Ramos <alfredoramos@duck.com>"
 
+# Install OS dependencies
+RUN apk upgrade --no-cache
+
 # Frontend setup
 WORKDIR /srv/http/frontend
 RUN rm -fR node_modules dist
@@ -16,6 +19,9 @@ RUN npm run build
 # ---[ Application ]---
 FROM nginx:mainline-alpine
 LABEL org.opencontainers.image.authors="Alfredo Ramos <alfredoramos@duck.com>"
+
+# Install OS dependencies
+RUN apk upgrade --no-cache
 
 # App setup
 WORKDIR /srv/http/frontend
