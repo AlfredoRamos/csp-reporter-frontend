@@ -67,9 +67,7 @@ onUnmounted(() => document.removeEventListener('keydown', closeOnEscape));
 			class="absolute z-50 rounded shadow-md origin-top-right right-0 transform opacity-100 scale-100"
 			:class="{ [props?.contentClass]: props?.contentClass?.length > 0 }"
 		>
-			<div
-				class="rounded-md ring-1 ring-black ring-opacity-5 py-1 bg-white"
-			>
+			<div class="rounded-md ring-1 ring-black/5 py-1 bg-white">
 				<slot name="content" />
 			</div>
 		</div>

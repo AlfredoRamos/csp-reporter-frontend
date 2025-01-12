@@ -57,7 +57,7 @@ watch(
 			<input
 				ref="trigger"
 				type="checkbox"
-				class="appearance-none transition ease-in-out duration-75 w-10 h-5 rounded-full outline-none focus:border-sky-500 focus:ring focus:ring-sky-500 focus:ring-opacity-25 disabled:bg-gray-300 disabled:text-gray-50 disabled:cursor-not-allowed"
+				class="appearance-none transition ease-in-out duration-75 w-10 h-5 rounded-full outline-none focus:border-sky-500 focus:ring focus:ring-sky-500/25 disabled:bg-gray-300 disabled:text-gray-50 disabled:cursor-not-allowed"
 				:class="{
 					'bg-green-600': activated,
 					'bg-slate-400': !activated,

@@ -538,7 +538,7 @@ onBeforeMount(() => {
 							<textarea
 								id="reason"
 								name="reason"
-								class="border border-gray-300 rounded px-2 py-1 shadow-sm outline-none focus:border-sky-500 focus:ring focus:ring-sky-500 focus:ring-opacity-25 invalid:border-red-500 invalid:focus:border-red-500 invalid:focus:ring-red-500 invalid:focus:ring-opacity-25 bg-white w-full max-h-24"
+								class="border border-gray-300 rounded px-2 py-1 shadow-sm outline-none focus:border-sky-500 focus:ring focus:ring-sky-500/25 invalid:border-red-500 invalid:focus:border-red-500 invalid:focus:ring-red-500/25 bg-white w-full max-h-24"
 								v-model="formData.reason"
 								@input="handleReason"
 								:disabled="loading"

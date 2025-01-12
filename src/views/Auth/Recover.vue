@@ -405,7 +405,7 @@ onBeforeMount(() => {
 								:minlength="minPasswordLength"
 								maxlength="255"
 								placeholder="Enter your new password"
-								class="border border-gray-300 rounded px-2 py-1 shadow-sm outline-none focus:border-sky-500 focus:ring focus:ring-sky-500 focus:ring-opacity-25 invalid:border-red-500 invalid:focus:border-red-500 invalid:focus:ring-red-500 invalid:focus:ring-opacity-25 bg-white w-full grow"
+								class="border border-gray-300 rounded px-2 py-1 shadow-sm outline-none focus:border-sky-500 focus:ring focus:ring-sky-500/25 invalid:border-red-500 invalid:focus:border-red-500 invalid:focus:ring-red-500/25 bg-white w-full grow"
 								:class="{
 									'border-red-500 focus:border-red-500 focus:ring-red-500':
 										errors?.password,
@@ -576,7 +576,7 @@ onBeforeMount(() => {
 								:minlength="minPasswordLength"
 								maxlength="255"
 								placeholder="Enter your new password again"
-								class="border border-gray-300 rounded px-2 py-1 shadow-sm outline-none focus:border-sky-500 focus:ring focus:ring-sky-500 focus:ring-opacity-25 invalid:border-red-500 invalid:focus:border-red-500 invalid:focus:ring-red-500 invalid:focus:ring-opacity-25 bg-white w-full grow"
+								class="border border-gray-300 rounded px-2 py-1 shadow-sm outline-none focus:border-sky-500 focus:ring focus:ring-sky-500/25 invalid:border-red-500 invalid:focus:border-red-500 invalid:focus:ring-red-500/25 bg-white w-full grow"
 								:class="{
 									'border-red-500 focus:border-red-500 focus:ring-red-500':
 										errors?.confirm_password,
@@ -639,7 +639,7 @@ onBeforeMount(() => {
 							id="email"
 							name="email"
 							placeholder="Enter your email"
-							class="border border-gray-300 rounded px-2 py-1 shadow-sm outline-none focus:border-sky-500 focus:ring focus:ring-sky-500 focus:ring-opacity-25 invalid:border-red-500 invalid:focus:border-red-500 invalid:focus:ring-red-500 invalid:focus:ring-opacity-25 bg-white w-full"
+							class="border border-gray-300 rounded px-2 py-1 shadow-sm outline-none focus:border-sky-500 focus:ring focus:ring-sky-500/25 invalid:border-red-500 invalid:focus:border-red-500 invalid:focus:ring-red-500/25 bg-white w-full"
 							:class="{
 								'border-red-500 focus:border-red-500 focus:ring-red-500':
 									errors?.email,
