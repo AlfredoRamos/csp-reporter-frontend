@@ -395,7 +395,7 @@ const handleToggleConfirmPassword = (e) => {
 							id="first-name"
 							name="first_name"
 							placeholder="Enter your first name"
-							class="border border-gray-300 rounded px-2 py-1 shadow-sm outline-none focus:border-sky-500 focus:ring focus:ring-sky-500 focus:ring-opacity-25 invalid:border-red-500 invalid:focus:border-red-500 invalid:focus:ring-red-500 invalid:focus:ring-opacity-25 bg-white w-full"
+							class="border border-gray-300 rounded px-2 py-1 shadow-sm outline-none focus:border-sky-500 focus:ring focus:ring-sky-500/25 invalid:border-red-500 invalid:focus:border-red-500 invalid:focus:ring-red-500/25 bg-white w-full"
 							:class="{
 								'border-red-500 focus:border-red-500 focus:ring-red-500':
 									errors?.first_name,
@@ -430,7 +430,7 @@ const handleToggleConfirmPassword = (e) => {
 							id="last-name"
 							name="last_name"
 							placeholder="Enter your last name"
-							class="border border-gray-300 rounded px-2 py-1 shadow-sm outline-none focus:border-sky-500 focus:ring focus:ring-sky-500 focus:ring-opacity-25 invalid:border-red-500 invalid:focus:border-red-500 invalid:focus:ring-red-500 invalid:focus:ring-opacity-25 bg-white w-full"
+							class="border border-gray-300 rounded px-2 py-1 shadow-sm outline-none focus:border-sky-500 focus:ring focus:ring-sky-500/25 invalid:border-red-500 invalid:focus:border-red-500 invalid:focus:ring-red-500/25 bg-white w-full"
 							:class="{
 								'border-red-500 focus:border-red-500 focus:ring-red-500':
 									errors?.last_name,
@@ -466,7 +466,7 @@ const handleToggleConfirmPassword = (e) => {
 							id="email"
 							name="email"
 							placeholder="Enter your email"
-							class="border border-gray-300 rounded px-2 py-1 shadow-sm outline-none focus:border-sky-500 focus:ring focus:ring-sky-500 focus:ring-opacity-25 invalid:border-red-500 invalid:focus:border-red-500 invalid:focus:ring-red-500 invalid:focus:ring-opacity-25 bg-white w-full"
+							class="border border-gray-300 rounded px-2 py-1 shadow-sm outline-none focus:border-sky-500 focus:ring focus:ring-sky-500/25 invalid:border-red-500 invalid:focus:border-red-500 invalid:focus:ring-red-500/25 bg-white w-full"
 							:class="{
 								'border-red-500 focus:border-red-500 focus:ring-red-500':
 									errors?.email,
@@ -505,7 +505,7 @@ const handleToggleConfirmPassword = (e) => {
 								:minlength="minPasswordLength"
 								maxlength="255"
 								placeholder="Enter your password"
-								class="border border-gray-300 rounded px-2 py-1 shadow-sm outline-none focus:border-sky-500 focus:ring focus:ring-sky-500 focus:ring-opacity-25 invalid:border-red-500 invalid:focus:border-red-500 invalid:focus:ring-red-500 invalid:focus:ring-opacity-25 bg-white w-full grow"
+								class="border border-gray-300 rounded px-2 py-1 shadow-sm outline-none focus:border-sky-500 focus:ring focus:ring-sky-500/25 invalid:border-red-500 invalid:focus:border-red-500 invalid:focus:ring-red-500/25 bg-white w-full grow"
 								:class="{
 									'border-red-500 focus:border-red-500 focus:ring-red-500':
 										errors?.password,
@@ -676,7 +676,7 @@ const handleToggleConfirmPassword = (e) => {
 								:minlength="minPasswordLength"
 								maxlength="255"
 								placeholder="Enter your password again"
-								class="border border-gray-300 rounded px-2 py-1 shadow-sm outline-none focus:border-sky-500 focus:ring focus:ring-sky-500 focus:ring-opacity-25 invalid:border-red-500 invalid:focus:border-red-500 invalid:focus:ring-red-500 invalid:focus:ring-opacity-25 bg-white w-full grow"
+								class="border border-gray-300 rounded px-2 py-1 shadow-sm outline-none focus:border-sky-500 focus:ring focus:ring-sky-500/25 invalid:border-red-500 invalid:focus:border-red-500 invalid:focus:ring-red-500/25 bg-white w-full grow"
 								:class="{
 									'border-red-500 focus:border-red-500 focus:ring-red-500':
 										errors?.confirm_password,
