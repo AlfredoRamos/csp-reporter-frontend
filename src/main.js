@@ -1,6 +1,6 @@
 import { createApp } from 'vue';
 import { createPinia } from 'pinia';
-import VueGtag from 'vue-gtag';
+import { createGtag } from 'vue-gtag';
 
 import App from '@/App.vue';
 import router from '@/router';
@@ -17,7 +17,11 @@ app.use(router);
 const googleAnalytics = import.meta.env.VITE_GOOGLE_ANALYTICS ?? '';
 
 if (googleAnalytics?.length > 0) {
-	app.use(VueGtag, { config: { id: googleAnalytics } });
+	const gtag = createGtag({
+		tagId: googleAnalytics,
+		config: { anonymize_ip: true },
+	});
+	app.use(gtag);
 }
 
 app.provide('http', http);
