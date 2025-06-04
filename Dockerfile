@@ -1,5 +1,5 @@
 # ---[ Arguments ]---
-ARG NODE_VERSION=23.10-alpine
+ARG NODE_VERSION=24.1-alpine
 
 # ---[ Frontend ]---
 FROM node:${NODE_VERSION} AS frontend-build
