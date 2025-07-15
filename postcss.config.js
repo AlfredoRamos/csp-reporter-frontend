@@ -41,7 +41,6 @@ export default {
 										removeEditorsNSData: {},
 										removeEmptyContainers: {},
 										removeMetadata: {},
-										removeTitle: {},
 										removeDesc: {},
 										removeUselessStrokeAndFill: {},
 									},
