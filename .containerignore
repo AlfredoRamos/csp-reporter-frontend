@@ -11,7 +11,9 @@
 **/*.crt
 **/*.cer
 **/*.cert
+**/*.containerfile
 **/*.dockerfile
+**/Containerfile
 **/Dockerfile
 
 # Frontend
@@ -23,5 +25,3 @@
 
 # Exceptions
 !.env
-!keys/encryption-private.json
-!keys/signing-public.json
