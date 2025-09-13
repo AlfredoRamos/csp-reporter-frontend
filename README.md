@@ -26,7 +26,7 @@ Frontend for the **CSP Reporter** REST API using [Vue](https://vuejs.org), [Pini
 npm ci --omit dev
 ```
 
-# Run app
+# Build app
 
 ## Production
 
