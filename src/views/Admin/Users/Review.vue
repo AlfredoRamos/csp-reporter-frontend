@@ -237,7 +237,7 @@ const columns = [
 						'button',
 						{
 							type: 'button',
-							class: 'rounded transition ease-in-out duration-75 bg-green-500/40 hover:bg-green-500 text-gray-100 hover:text-gray-50 px-2 py-1 disabled:cursor-not-allowed',
+							class: 'rounded-sm transition ease-in-out duration-75 bg-green-500/40 hover:bg-green-500 text-gray-100 hover:text-gray-50 px-2 py-1 disabled:cursor-not-allowed',
 							title: 'Approve',
 							disabled: loading.value,
 							onClick: () => {
@@ -256,7 +256,7 @@ const columns = [
 						'button',
 						{
 							type: 'button',
-							class: 'rounded transition ease-in-out duration-75 bg-red-500/40 hover:bg-red-500 text-gray-100 hover:text-gray-50 px-2 py-1 disabled:cursor-not-allowed',
+							class: 'rounded-sm transition ease-in-out duration-75 bg-red-500/40 hover:bg-red-500 text-gray-100 hover:text-gray-50 px-2 py-1 disabled:cursor-not-allowed',
 							title: 'Reject',
 							disabled: loading.value,
 							onClick: () => {
@@ -368,7 +368,9 @@ onBeforeMount(() => {
 
 <template>
 	<Authenticated>
-		<div class="overflow-auto bg-white border rounded shadow-sm mb-4 mt-4">
+		<div
+			class="overflow-auto bg-white border rounded-sm shadow-xs mb-4 mt-4"
+		>
 			<div class="table table-fixed w-full">
 				<div
 					v-for="headerGroup in table.getHeaderGroups()"
@@ -471,7 +473,7 @@ onBeforeMount(() => {
 		>
 			<button
 				type="button"
-				class="rounded transition ease-in-out duration-75 disabled:opacity-25 text-gray-400 p-1"
+				class="rounded-sm transition ease-in-out duration-75 disabled:opacity-25 text-gray-400 p-1"
 				:class="{
 					'hover:text-gray-600': users?.prev,
 				}"
@@ -491,7 +493,7 @@ onBeforeMount(() => {
 			</div>
 			<button
 				type="button"
-				class="rounded transition ease-in-out duration-75 disabled:opacity-25 text-gray-400 p-1"
+				class="rounded-sm transition ease-in-out duration-75 disabled:opacity-25 text-gray-400 p-1"
 				:class="{
 					'hover:text-gray-600': users?.next,
 				}"
@@ -538,7 +540,7 @@ onBeforeMount(() => {
 							<textarea
 								id="reason"
 								name="reason"
-								class="border border-gray-300 rounded px-2 py-1 shadow-sm outline-none focus:border-sky-500 focus:ring focus:ring-sky-500/25 invalid:border-red-500 invalid:focus:border-red-500 invalid:focus:ring-red-500/25 bg-white w-full max-h-24"
+								class="border border-gray-300 rounded-sm px-2 py-1 shadow-xs outline-hidden focus:border-sky-500 focus:ring-3 focus:ring-sky-500/25 invalid:border-red-500 invalid:focus:border-red-500 invalid:focus:ring-red-500/25 bg-white w-full max-h-24"
 								v-model="formData.reason"
 								@input="handleReason"
 								:disabled="loading"

@@ -30,7 +30,8 @@ const uid = uuidv4();
 	<div
 		class="flex overflow-auto mb-4"
 		:class="{
-			'flex-col border rounded shadow-sm': props?.variant === 'vertical',
+			'flex-col border rounded-sm shadow-xs':
+				props?.variant === 'vertical',
 			'gap-2 items-start': props?.variant === 'horizontal',
 		}"
 	>
@@ -38,14 +39,14 @@ const uid = uuidv4();
 			class="flex flex-wrap gap-2 bg-slate-400/60 text-gray-50 p-1"
 			:class="{
 				'items-center': props?.variant === 'vertical',
-				'flex-col w-2/12 rounded shadow-sm':
+				'flex-col w-2/12 rounded-sm shadow-xs':
 					props?.variant === 'horizontal',
 			}"
 		>
 			<div
 				v-for="(tab, index) in props?.tabList ?? []"
 				:key="index"
-				class="px-2 py-1 font-semibold transition ease-in-out duration-75 rounded cursor-pointer"
+				class="px-2 py-1 font-semibold transition ease-in-out duration-75 rounded-sm cursor-pointer"
 				:class="{
 					'': props?.variant === 'vertical',
 					grow: props?.variant === 'horizontal',
@@ -79,7 +80,7 @@ const uid = uuidv4();
 				v-if="index === activeTab"
 				class="bg-white p-2"
 				:class="{
-					'grow border rounded shadow-sm':
+					'grow border rounded-sm shadow-xs':
 						props?.variant === 'horizontal',
 				}"
 			>

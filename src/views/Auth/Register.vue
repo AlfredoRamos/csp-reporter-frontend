@@ -395,7 +395,7 @@ const handleToggleConfirmPassword = (e) => {
 							id="first-name"
 							name="first_name"
 							placeholder="Enter your first name"
-							class="border border-gray-300 rounded px-2 py-1 shadow-sm outline-none focus:border-sky-500 focus:ring focus:ring-sky-500/25 invalid:border-red-500 invalid:focus:border-red-500 invalid:focus:ring-red-500/25 bg-white w-full"
+							class="border border-gray-300 rounded-sm px-2 py-1 shadow-xs outline-hidden focus:border-sky-500 focus:ring-3 focus:ring-sky-500/25 invalid:border-red-500 invalid:focus:border-red-500 invalid:focus:ring-red-500/25 bg-white w-full"
 							:class="{
 								'border-red-500 focus:border-red-500 focus:ring-red-500':
 									errors?.first_name,
@@ -430,7 +430,7 @@ const handleToggleConfirmPassword = (e) => {
 							id="last-name"
 							name="last_name"
 							placeholder="Enter your last name"
-							class="border border-gray-300 rounded px-2 py-1 shadow-sm outline-none focus:border-sky-500 focus:ring focus:ring-sky-500/25 invalid:border-red-500 invalid:focus:border-red-500 invalid:focus:ring-red-500/25 bg-white w-full"
+							class="border border-gray-300 rounded-sm px-2 py-1 shadow-xs outline-hidden focus:border-sky-500 focus:ring-3 focus:ring-sky-500/25 invalid:border-red-500 invalid:focus:border-red-500 invalid:focus:ring-red-500/25 bg-white w-full"
 							:class="{
 								'border-red-500 focus:border-red-500 focus:ring-red-500':
 									errors?.last_name,
@@ -466,7 +466,7 @@ const handleToggleConfirmPassword = (e) => {
 							id="email"
 							name="email"
 							placeholder="Enter your email"
-							class="border border-gray-300 rounded px-2 py-1 shadow-sm outline-none focus:border-sky-500 focus:ring focus:ring-sky-500/25 invalid:border-red-500 invalid:focus:border-red-500 invalid:focus:ring-red-500/25 bg-white w-full"
+							class="border border-gray-300 rounded-sm px-2 py-1 shadow-xs outline-hidden focus:border-sky-500 focus:ring-3 focus:ring-sky-500/25 invalid:border-red-500 invalid:focus:border-red-500 invalid:focus:ring-red-500/25 bg-white w-full"
 							:class="{
 								'border-red-500 focus:border-red-500 focus:ring-red-500':
 									errors?.email,
@@ -505,7 +505,7 @@ const handleToggleConfirmPassword = (e) => {
 								:minlength="minPasswordLength"
 								maxlength="255"
 								placeholder="Enter your password"
-								class="border border-gray-300 rounded px-2 py-1 shadow-sm outline-none focus:border-sky-500 focus:ring focus:ring-sky-500/25 invalid:border-red-500 invalid:focus:border-red-500 invalid:focus:ring-red-500/25 bg-white w-full grow"
+								class="border border-gray-300 rounded-sm px-2 py-1 shadow-xs outline-hidden focus:border-sky-500 focus:ring-3 focus:ring-sky-500/25 invalid:border-red-500 invalid:focus:border-red-500 invalid:focus:ring-red-500/25 bg-white w-full grow"
 								:class="{
 									'border-red-500 focus:border-red-500 focus:ring-red-500':
 										errors?.password,
@@ -527,7 +527,7 @@ const handleToggleConfirmPassword = (e) => {
 							/>
 							<button
 								type="button"
-								class="bg-gray-400/20 hover:bg-gray-400/30 text-gray-500 transition ease-in-out duration-75 p-2 border rounded shrink disabled:cursor-not-allowed"
+								class="bg-gray-400/20 hover:bg-gray-400/30 text-gray-500 transition ease-in-out duration-75 p-2 border rounded-sm shrink disabled:cursor-not-allowed"
 								@click.prevent="handleTogglePassword"
 								:title="
 									showPassword
@@ -549,7 +549,7 @@ const handleToggleConfirmPassword = (e) => {
 							<div
 								v-for="value in [...Array(5).keys()]"
 								:key="value"
-								class="w-full h-2 flex-1 transition ease-in-out duration-75 rounded"
+								class="w-full h-2 flex-1 transition ease-in-out duration-75 rounded-sm"
 								:class="{
 									'bg-gray-200':
 										value > passwordStrength?.score ||
@@ -676,7 +676,7 @@ const handleToggleConfirmPassword = (e) => {
 								:minlength="minPasswordLength"
 								maxlength="255"
 								placeholder="Enter your password again"
-								class="border border-gray-300 rounded px-2 py-1 shadow-sm outline-none focus:border-sky-500 focus:ring focus:ring-sky-500/25 invalid:border-red-500 invalid:focus:border-red-500 invalid:focus:ring-red-500/25 bg-white w-full grow"
+								class="border border-gray-300 rounded-sm px-2 py-1 shadow-xs outline-hidden focus:border-sky-500 focus:ring-3 focus:ring-sky-500/25 invalid:border-red-500 invalid:focus:border-red-500 invalid:focus:ring-red-500/25 bg-white w-full grow"
 								:class="{
 									'border-red-500 focus:border-red-500 focus:ring-red-500':
 										errors?.confirm_password,
@@ -689,7 +689,7 @@ const handleToggleConfirmPassword = (e) => {
 							/>
 							<button
 								type="button"
-								class="bg-gray-400/20 hover:bg-gray-400/30 text-gray-500 transition ease-in-out duration-75 p-2 border rounded shrink disabled:cursor-not-allowed"
+								class="bg-gray-400/20 hover:bg-gray-400/30 text-gray-500 transition ease-in-out duration-75 p-2 border rounded-sm shrink disabled:cursor-not-allowed"
 								@click.prevent="handleToggleConfirmPassword"
 								:title="
 									showConfirmPassword
@@ -773,7 +773,7 @@ const handleToggleConfirmPassword = (e) => {
 					<div class="flex items-center justify-center gap-2">
 						<button
 							type="button"
-							class="whitespace-nowrap bg-sky-600 hover:bg-sky-600/70 text-gray-50 hover:text-white transition ease-in-out duration-75 px-2 py-1 rounded disabled:cursor-not-allowed disabled:bg-gray-300"
+							class="whitespace-nowrap bg-sky-600 hover:bg-sky-600/70 text-gray-50 hover:text-white transition ease-in-out duration-75 px-2 py-1 rounded-sm disabled:cursor-not-allowed disabled:bg-gray-300"
 							@click.prevent="handleUserAccount"
 							:disabled="loading || !canRegisterAccount"
 						>
@@ -816,7 +816,7 @@ const handleToggleConfirmPassword = (e) => {
 				</div>
 				<RouterLink
 					:to="{ name: 'auth_login' }"
-					class="whitespace-nowrap bg-sky-600 hover:bg-sky-600/70 text-gray-50 hover:text-white transition ease-in-out duration-75 px-2 py-1 rounded"
+					class="whitespace-nowrap bg-sky-600 hover:bg-sky-600/70 text-gray-50 hover:text-white transition ease-in-out duration-75 px-2 py-1 rounded-sm"
 				>
 					<Icon
 						icon="heroicons:arrow-left-on-rectangle-solid"

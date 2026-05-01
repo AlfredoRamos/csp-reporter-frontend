@@ -13,7 +13,7 @@ const roles = auth?.userData?.roles ?? [];
 
 <template>
 	<aside
-		class="flex flex-col grow transition-all ease-in-out duration-200 h-full fixed top-0 left-0 bg-sky-900 text-gray-50 shadow-md drop-shadow-md overflow-hidden z-[5]"
+		class="flex flex-col grow transition-all ease-in-out duration-200 h-full fixed top-0 left-0 bg-sky-900 text-gray-50 shadow-md drop-shadow-md overflow-hidden z-5"
 		:class="{
 			'w-16 hover:w-60 group/sidebar': navbarToggle.getState === 'auto',
 			'w-60': navbarToggle.getState === 'open',
@@ -27,7 +27,7 @@ const roles = auth?.userData?.roles ?? [];
 			<nav class="flex flex-col gap-2">
 				<RouterLink
 					:to="{ name: 'home' }"
-					class="truncate px-2 py-1 rounded transition ease-in-out duration-75 hover:bg-sky-700/70 text-gray-50 whitespace-nowrap"
+					class="truncate px-2 py-1 rounded-sm transition ease-in-out duration-75 hover:bg-sky-700/70 text-gray-50 whitespace-nowrap"
 					active-class="bg-sky-700/70"
 					title="Home"
 				>
@@ -54,7 +54,7 @@ const roles = auth?.userData?.roles ?? [];
 				>
 					<RouterLink
 						:to="{ name: 'reports_index' }"
-						class="truncate px-2 py-1 rounded transition ease-in-out duration-75 hover:bg-sky-700/70 text-gray-50 whitespace-nowrap"
+						class="truncate px-2 py-1 rounded-sm transition ease-in-out duration-75 hover:bg-sky-700/70 text-gray-50 whitespace-nowrap"
 						active-class="bg-sky-700/70"
 						title="Reports"
 					>
@@ -78,7 +78,7 @@ const roles = auth?.userData?.roles ?? [];
 				<template v-if="hasPermission(['superadmin', 'admin'], roles)">
 					<RouterLink
 						:to="{ name: 'admin_users_review' }"
-						class="truncate px-2 py-1 rounded transition ease-in-out duration-75 hover:bg-sky-700/70 text-gray-50 whitespace-nowrap"
+						class="truncate px-2 py-1 rounded-sm transition ease-in-out duration-75 hover:bg-sky-700/70 text-gray-50 whitespace-nowrap"
 						active-class="bg-sky-700/70"
 						title="Manage users"
 					>
@@ -102,7 +102,7 @@ const roles = auth?.userData?.roles ?? [];
 			</nav>
 			<div class="flex items-center justify-center gap-2">
 				<div
-					class="px-2 py-1 rounded transition ease-in-out duration-75 hover:bg-sky-700/70 text-gray-50 cursor-pointer"
+					class="px-2 py-1 rounded-sm transition ease-in-out duration-75 hover:bg-sky-700/70 text-gray-50 cursor-pointer"
 					@click="navbarToggle.toggleState()"
 				>
 					<Icon

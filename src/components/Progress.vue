@@ -34,12 +34,12 @@ progress[value]::-moz-progress-bar {
 	>
 		<div
 			v-if="!completed"
-			class="flex flex-wrap items-center justify-center gap-2 w-full md:w-64 bg-gray-300 text-gray-50 rounded shadow-md p-2 select-none"
+			class="flex flex-wrap items-center justify-center gap-2 w-full md:w-64 bg-gray-300 text-gray-50 rounded-sm shadow-md p-2 select-none"
 		>
 			<Icon v-if="progress >= 100" icon="heroicons:check-circle-solid" />
 			<Icon v-else icon="svg-spinners:tadpole" />
 			<progress
-				class="grow border border-gray-50 bg-transparent rounded h-2 appearance-none"
+				class="grow border border-gray-50 bg-transparent rounded-sm h-2 appearance-none"
 				max="100"
 				:value="progress"
 			></progress>

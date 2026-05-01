@@ -51,13 +51,13 @@ watch(
 <template>
 	<div class="inline-block w-fit">
 		<label
-			class="relative flex items-center w-max select-none border border-gray-300 rounded-full shadow-sm"
+			class="relative flex items-center w-max select-none border border-gray-300 rounded-full shadow-xs"
 			:class="{ 'cursor-not-allowed': disabled }"
 		>
 			<input
 				ref="trigger"
 				type="checkbox"
-				class="appearance-none transition ease-in-out duration-75 w-10 h-5 rounded-full outline-none focus:border-sky-500 focus:ring focus:ring-sky-500/25 disabled:bg-gray-300 disabled:text-gray-50 disabled:cursor-not-allowed"
+				class="appearance-none transition ease-in-out duration-75 w-10 h-5 rounded-full outline-hidden focus:border-sky-500 focus:ring-3 focus:ring-sky-500/25 disabled:bg-gray-300 disabled:text-gray-50 disabled:cursor-not-allowed"
 				:class="{
 					'bg-green-600': activated,
 					'bg-slate-400': !activated,
@@ -79,7 +79,7 @@ watch(
 				<Icon icon="heroicons:x-mark-solid" class="w-3 h-3 mr-0.5" />
 			</div>
 			<div
-				class="w-5 h-5 absolute rounded-full bg-gray-200 transition ease-in-out duration-75 shadow-sm"
+				class="w-5 h-5 absolute rounded-full bg-gray-200 transition ease-in-out duration-75 shadow-xs"
 				:class="{
 					'translate-x-full': activated,
 					'translate-x-0': !activated,

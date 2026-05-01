@@ -40,7 +40,7 @@ const props = defineProps({
 			:class="props?.lineClass ?? 'bg-slate-200'"
 		></div>
 
-		<div :class="props?.itemClass ?? 'grow px-6 py-3 rounded'">
+		<div :class="props?.itemClass ?? 'grow px-6 py-3 rounded-sm'">
 			<slot name="item" />
 		</div>
 	</div>

@@ -9,7 +9,7 @@ const hCaptchaConfig = {
 <template>
 	<Teleport to="body" v-if="hCaptchaConfig?.size === 'invisible'">
 		<div
-			class="group flex flex-wrap items-center justify-center gap-2 select-none bg-gray-50 fixed right-3 bottom-3 p-2 border rounded shadow-sm"
+			class="group flex flex-wrap items-center justify-center gap-2 select-none bg-gray-50 fixed right-3 bottom-3 p-2 border rounded-sm shadow-xs"
 		>
 			<div
 				class="hidden group-hover:flex group-hover:border-r flex-col justify-center gap-1 text-sm text-gray-500 px-2"
