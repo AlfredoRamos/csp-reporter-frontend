@@ -16,27 +16,24 @@ export default defineConfig({
 	build: {
 		rollupOptions: {
 			output: {
-				compact: true,
-				generatedCode: {
-					preset: 'es2015',
-					arrowFunctions: true,
-					constBindings: true,
-					objectShorthand: true,
-				},
 				manualChunks(id, { getModuleInfo }) {
-					const { isIncluded } = getModuleInfo(id);
+					const info = getModuleInfo(id);
 
-					if (!isIncluded || !id.includes('node_modules')) {
+					if (
+						!info ||
+						!info.isIncluded ||
+						!id.includes('node_modules')
+					) {
 						return;
 					}
 
-					const el = id
+					const parts = id
 						.toString()
 						.split('node_modules/')[1]
 						.split('/');
-					const fl = el[el.length - 1];
+					const file = parts[parts.length - 1];
 
-					return el[0] + '-' + fl.substring(0, fl.lastIndexOf('.'));
+					return parts[0] + '-' + file.replace(/\.\w+$/, '');
 				},
 			},
 		},
