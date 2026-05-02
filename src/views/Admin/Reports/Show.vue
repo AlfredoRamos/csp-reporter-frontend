@@ -79,7 +79,7 @@ onBeforeMount(() => {
 		<template v-else>
 			<div class="flex flex-wrap items-start justify-center gap-4 mb-4">
 				<div
-					class="flex flex-col justify-center gap-8 bg-white border rounded shadow-md px-4 py-2 flex-1"
+					class="flex flex-col justify-center gap-8 bg-white border rounded-sm shadow-md px-4 py-2 flex-1"
 				>
 					<div class="flex flex-col items-start justify-start gap-4">
 						<div
@@ -266,7 +266,7 @@ onBeforeMount(() => {
 								</div>
 								<code
 									v-if="report?.script_sample"
-									class="break-all line-clamp-2 text-sm font-mono bg-gray-100 border p-1 rounded w-full"
+									class="break-all line-clamp-2 text-sm font-mono bg-gray-100 border p-1 rounded-sm w-full"
 								>
 									{{ report?.script_sample }}
 								</code>
@@ -302,7 +302,7 @@ onBeforeMount(() => {
 								</div>
 								<code
 									v-if="report?.original_policy"
-									class="break-all text-sm font-mono bg-gray-100 border p-1 rounded w-full"
+									class="break-all text-sm font-mono bg-gray-100 border p-1 rounded-sm w-full"
 								>
 									{{ report?.original_policy }}
 								</code>

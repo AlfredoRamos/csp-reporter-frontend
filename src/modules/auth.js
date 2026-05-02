@@ -14,7 +14,6 @@ const parseAccessToken = async (token) => {
 	const encPrivKey = await importJWK(encPrivKeyJson);
 	const { plaintext, protectedHeader: encProtectedHeader } =
 		await compactDecrypt(token, encPrivKey);
-	token = null;
 
 	const isJweValid =
 		encProtectedHeader?.typ === 'JWE' &&
@@ -48,7 +47,6 @@ const parseAccessToken = async (token) => {
 
 const validateAccessToken = async (token) => {
 	const jwt = await parseAccessToken(token);
-	token = null;
 
 	const now = new Date();
 	const isJwtValid =

@@ -39,7 +39,7 @@ onUnmounted(() => document.removeEventListener('keydown', closeOnEscape));
 			class="flex items-center justify-center fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-20 w-11/12 lg:w-6/12"
 		>
 			<div
-				class="relative bg-white border rounded shadow-md px-4 py-2 w-full max-h-[92vh] overflow-hidden"
+				class="relative bg-white border rounded-sm shadow-md px-4 py-2 w-full max-h-[92vh] overflow-hidden"
 			>
 				<div
 					class="absolute top-1 right-1 p-2 cursor-pointer"
@@ -67,7 +67,7 @@ onUnmounted(() => document.removeEventListener('keydown', closeOnEscape));
 						<slot name="footer">
 							<button
 								type="button"
-								class="rounded transition ease-in-out duration-75 bg-red-700 hover:bg-red-700/70 text-gray-100 hover:text-gray-50 px-2 py-1 whitespace-nowrap disabled:cursor-not-allowed"
+								class="rounded-sm transition ease-in-out duration-75 bg-red-700 hover:bg-red-700/70 text-gray-100 hover:text-gray-50 px-2 py-1 whitespace-nowrap disabled:cursor-not-allowed"
 								@click.prevent="emit('cancel')"
 							>
 								<Icon
@@ -79,7 +79,7 @@ onUnmounted(() => document.removeEventListener('keydown', closeOnEscape));
 							</button>
 							<button
 								type="button"
-								class="rounded transition ease-in-out duration-75 bg-green-700 hover:bg-green-700/70 text-gray-100 hover:text-gray-50 px-2 py-1 whitespace-nowrap disabled:cursor-not-allowed"
+								class="rounded-sm transition ease-in-out duration-75 bg-green-700 hover:bg-green-700/70 text-gray-100 hover:text-gray-50 px-2 py-1 whitespace-nowrap disabled:cursor-not-allowed"
 								@click.prevent="emit('accept')"
 							>
 								<Icon
@@ -96,7 +96,7 @@ onUnmounted(() => document.removeEventListener('keydown', closeOnEscape));
 		</div>
 		<div
 			v-if="open"
-			class="fixed inset-0 z-10 bg-black/25 backdrop-blur-sm cursor-pointer"
+			class="fixed inset-0 z-10 bg-black/25 backdrop-blur-xs cursor-pointer"
 			@click.prevent="handleClose"
 		></div>
 	</Teleport>

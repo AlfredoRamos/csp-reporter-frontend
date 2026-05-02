@@ -13,11 +13,11 @@ if (!isAuthenticated) {
 }
 
 const getUserRoles = () => {
-	let roles = [];
+	let roles = []; // eslint-disable-line no-useless-assignment
 
 	try {
 		roles = JSON.parse(window.localStorage.getItem('user'))?.roles ?? [];
-	} catch (ex) {
+	} catch {
 		roles = [];
 	}
 

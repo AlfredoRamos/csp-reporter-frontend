@@ -9,7 +9,9 @@ const homeRoute = router.resolve({ name: 'home' });
 </script>
 
 <template>
-	<nav class="bg-white text-gray-600 px-4 py-2 shadow border rounded mb-4">
+	<nav
+		class="bg-white text-gray-600 px-4 py-2 shadow-sm border rounded-sm mb-4"
+	>
 		<ul class="flex flex-wrap items-center gap-2">
 			<li>
 				<RouterLink

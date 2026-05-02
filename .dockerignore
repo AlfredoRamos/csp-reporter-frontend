@@ -18,7 +18,7 @@
 **/node_modules
 **/dist
 **/.prettierrc.json
-**/.eslintrc.cjs
+**/eslint.config.js
 **/.tool-versions
 
 # Exceptions

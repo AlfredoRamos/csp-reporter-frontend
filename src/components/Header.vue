@@ -40,7 +40,7 @@ const handleLogout = (e) => {
 
 <template>
 	<header
-		class="bg-sky-900 text-gray-50 shadow sticky top-0 left-0 right-0 z-10"
+		class="bg-sky-900 text-gray-50 shadow-sm sticky top-0 left-0 right-0 z-10"
 		:class="{ [props?.class]: props?.class?.length > 0 }"
 	>
 		<div
@@ -58,7 +58,7 @@ const handleLogout = (e) => {
 			</RouterLink>
 			<button
 				type="button"
-				class="navbar-toggler lg:hidden flex justify-center p-2 text-xl bg-sky-700 hover:bg-sky-700/70 text-gray-50 rounded disabled:cursor-not-allowed"
+				class="navbar-toggler lg:hidden flex justify-center p-2 text-xl bg-sky-700 hover:bg-sky-700/70 text-gray-50 rounded-sm disabled:cursor-not-allowed"
 				aria-label="Toggle menu"
 				@click="toggle"
 			>
@@ -70,7 +70,7 @@ const handleLogout = (e) => {
 				class="flex lg:flex flex-wrap grow flex-col lg:flex-row items-start lg:items-center justify-start lg:justify-end w-full lg:w-auto gap-2 lg:gap-4"
 			>
 				<Dropdown
-					class="w-fit rounded transition ease-in-out duration-75"
+					class="w-fit rounded-sm transition ease-in-out duration-75"
 					trigger-class="hover:bg-sky-700/70 text-gray-50"
 					open-class="bg-gray-700/70"
 				>
@@ -91,7 +91,7 @@ const handleLogout = (e) => {
 						<RouterLink
 							v-if="false"
 							:to="{ name: 'user_settings' }"
-							class="block w-full px-4 py-2 text-left text-sm leading-5 text-gray-700 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 transition duration-75 ease-in-out"
+							class="block w-full px-4 py-2 text-left text-sm leading-5 text-gray-700 hover:bg-gray-100 focus:outline-hidden focus:bg-gray-100 transition duration-75 ease-in-out"
 						>
 							<Icon
 								icon="heroicons:cog-6-tooth-solid"
@@ -102,7 +102,7 @@ const handleLogout = (e) => {
 						<RouterLink
 							v-if="hasPermission(['admin', 'superadmin'], roles)"
 							:to="{ name: 'system' }"
-							class="block w-full px-4 py-2 text-left text-sm leading-5 text-gray-700 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 transition duration-75 ease-in-out"
+							class="block w-full px-4 py-2 text-left text-sm leading-5 text-gray-700 hover:bg-gray-100 focus:outline-hidden focus:bg-gray-100 transition duration-75 ease-in-out"
 						>
 							<Icon
 								icon="heroicons:wrench-screwdriver-solid"
@@ -114,7 +114,7 @@ const handleLogout = (e) => {
 						<RouterLink
 							v-if="hasPermission(['superadmin'], roles)"
 							:to="{ name: 'admin_users' }"
-							class="block w-full px-4 py-2 text-left text-sm leading-5 text-gray-700 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 transition duration-75 ease-in-out"
+							class="block w-full px-4 py-2 text-left text-sm leading-5 text-gray-700 hover:bg-gray-100 focus:outline-hidden focus:bg-gray-100 transition duration-75 ease-in-out"
 						>
 							<Icon
 								icon="heroicons:user-group-solid"
@@ -127,7 +127,7 @@ const handleLogout = (e) => {
 							type="button"
 							@click.prevent="handleLogout"
 							:disabled="loading"
-							class="block w-full px-4 py-2 text-left text-sm leading-5 text-gray-700 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 transition duration-75 ease-in-out"
+							class="block w-full px-4 py-2 text-left text-sm leading-5 text-gray-700 hover:bg-gray-100 focus:outline-hidden focus:bg-gray-100 transition duration-75 ease-in-out"
 						>
 							<Icon
 								v-if="loading"

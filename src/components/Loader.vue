@@ -20,6 +20,6 @@ import { Icon } from '@iconify/vue';
 				/>
 			</div>
 		</div>
-		<div class="fixed inset-0 z-10 bg-black/25 backdrop-blur-sm"></div>
+		<div class="fixed inset-0 z-10 bg-black/25 backdrop-blur-xs"></div>
 	</Teleport>
 </template>

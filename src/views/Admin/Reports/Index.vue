@@ -154,7 +154,7 @@ const columns = [
 			return h(
 				'code',
 				{
-					class: 'break-all line-clamp-2 text-sm font-mono bg-gray-100 border p-1 rounded',
+					class: 'break-all line-clamp-2 text-sm font-mono bg-gray-100 border p-1 rounded-sm',
 					title: data,
 				},
 				data,
@@ -191,7 +191,7 @@ const columns = [
 						'button',
 						{
 							type: 'button',
-							class: 'rounded transition ease-in-out duration-75 bg-sky-500/40 hover:bg-sky-500 text-gray-100 hover:text-gray-50 px-2 py-1 disabled:cursor-not-allowed',
+							class: 'rounded-sm transition ease-in-out duration-75 bg-sky-500/40 hover:bg-sky-500 text-gray-100 hover:text-gray-50 px-2 py-1 disabled:cursor-not-allowed',
 							title: 'View',
 							disabled: loading.value,
 							onClick: () => {
@@ -214,7 +214,7 @@ const columns = [
 						'button',
 						{
 							type: 'button',
-							class: 'rounded transition ease-in-out duration-75 bg-red-500/40 hover:bg-red-500 text-gray-100 hover:text-gray-50 px-2 py-1 disabled:cursor-not-allowed',
+							class: 'rounded-sm transition ease-in-out duration-75 bg-red-500/40 hover:bg-red-500 text-gray-100 hover:text-gray-50 px-2 py-1 disabled:cursor-not-allowed',
 							title: 'Delete',
 							disabled: loading.value,
 							onClick: () => {},
@@ -340,7 +340,7 @@ onBeforeMount(async () => {
 		<form
 			@submit.prevent="handleSearch"
 			method="post"
-			class="flex flex-wrap items-start gap-4 bg-white p-4 shadow border rounded mb-4"
+			class="flex flex-wrap items-start gap-4 bg-white p-4 shadow-sm border rounded-sm mb-4"
 		>
 			<div class="flex grow flex-col justify-center gap-2">
 				<label for="domain" class="text-sm font-semibold text-gray-500"
@@ -351,7 +351,7 @@ onBeforeMount(async () => {
 					id="domain"
 					name="domain"
 					maxlength="5"
-					class="border border-gray-300 rounded px-2 py-1 shadow-sm outline-none focus:border-sky-500 focus:ring focus:ring-sky-500/25 invalid:border-red-500 invalid:focus:border-red-500 invalid:focus:ring-red-500/25 bg-white w-full"
+					class="border border-gray-300 rounded-sm px-2 py-1 shadow-xs outline-hidden focus:border-sky-500 focus:ring-3 focus:ring-sky-500/25 invalid:border-red-500 invalid:focus:border-red-500 invalid:focus:ring-red-500/25 bg-white w-full"
 					v-model="searchFormData.domain"
 					:disabled="loading"
 				/>
@@ -368,7 +368,7 @@ onBeforeMount(async () => {
 					id="effective_directive"
 					name="effective_directive"
 					maxlength="5"
-					class="border border-gray-300 rounded px-2 py-1 shadow-sm outline-none focus:border-sky-500 focus:ring focus:ring-sky-500/25 invalid:border-red-500 invalid:focus:border-red-500 invalid:focus:ring-red-500/25 bg-white w-full"
+					class="border border-gray-300 rounded-sm px-2 py-1 shadow-xs outline-hidden focus:border-sky-500 focus:ring-3 focus:ring-sky-500/25 invalid:border-red-500 invalid:focus:border-red-500 invalid:focus:ring-red-500/25 bg-white w-full"
 					v-model="searchFormData.effective_directive"
 					:disabled="loading"
 				/>
@@ -383,7 +383,7 @@ onBeforeMount(async () => {
 					id="keyword"
 					name="keyword"
 					maxlength="150"
-					class="border border-gray-300 rounded px-2 py-1 shadow-sm outline-none focus:border-sky-500 focus:ring focus:ring-sky-500/25 invalid:border-red-500 invalid:focus:border-red-500 invalid:focus:ring-red-500/25 bg-white w-full"
+					class="border border-gray-300 rounded-sm px-2 py-1 shadow-xs outline-hidden focus:border-sky-500 focus:ring-3 focus:ring-sky-500/25 invalid:border-red-500 invalid:focus:border-red-500 invalid:focus:ring-red-500/25 bg-white w-full"
 					v-model="searchFormData.keyword"
 					:disabled="loading"
 				/>
@@ -392,7 +392,7 @@ onBeforeMount(async () => {
 			<div class="flex shrink flex-col justify-center gap-2">
 				<button
 					@click.prevent="handleSearch"
-					class="whitespace-nowrap bg-green-600 hover:bg-green-600/70 text-gray-50 hover:text-white text-sm transition ease-in-out duration-75 px-2 py-1 rounded w-full disabled:cursor-not-allowed"
+					class="whitespace-nowrap bg-green-600 hover:bg-green-600/70 text-gray-50 hover:text-white text-sm transition ease-in-out duration-75 px-2 py-1 rounded-sm w-full disabled:cursor-not-allowed"
 					:disabled="loading"
 				>
 					<Icon
@@ -404,7 +404,7 @@ onBeforeMount(async () => {
 				</button>
 				<button
 					@click.prevent="resetSearchFormData"
-					class="whitespace-nowrap bg-yellow-600 hover:bg-yellow-600/70 text-gray-50 hover:text-white text-sm transition ease-in-out duration-75 px-2 py-1 rounded w-full disabled:cursor-not-allowed"
+					class="whitespace-nowrap bg-yellow-600 hover:bg-yellow-600/70 text-gray-50 hover:text-white text-sm transition ease-in-out duration-75 px-2 py-1 rounded-sm w-full disabled:cursor-not-allowed"
 					:disabled="loading"
 				>
 					<Icon
@@ -417,7 +417,9 @@ onBeforeMount(async () => {
 			</div>
 		</form>
 
-		<div class="overflow-auto bg-white border rounded shadow-sm mb-4 mt-4">
+		<div
+			class="overflow-auto bg-white border rounded-sm shadow-xs mb-4 mt-4"
+		>
 			<div class="table table-fixed w-full">
 				<div
 					v-for="headerGroup in table.getHeaderGroups()"
@@ -515,7 +517,7 @@ onBeforeMount(async () => {
 		>
 			<button
 				type="button"
-				class="rounded transition ease-in-out duration-75 disabled:opacity-25 text-gray-400 p-1"
+				class="rounded-sm transition ease-in-out duration-75 disabled:opacity-25 text-gray-400 p-1"
 				:class="{
 					'hover:text-gray-600': reports?.prev,
 				}"
@@ -535,7 +537,7 @@ onBeforeMount(async () => {
 			</div>
 			<button
 				type="button"
-				class="rounded transition ease-in-out duration-75 disabled:opacity-25 text-gray-400 p-1"
+				class="rounded-sm transition ease-in-out duration-75 disabled:opacity-25 text-gray-400 p-1"
 				:class="{
 					'hover:text-gray-600': reports?.next,
 				}"

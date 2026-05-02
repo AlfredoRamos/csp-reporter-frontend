@@ -79,7 +79,7 @@ onBeforeMount(async () => {
 				</div>
 				<RouterLink
 					:to="{ name: 'auth_login' }"
-					class="whitespace-nowrap bg-green-600 hover:bg-green-600/70 text-gray-50 hover:text-white transition ease-in-out duration-75 px-2 py-1 rounded w-fit mx-auto"
+					class="whitespace-nowrap bg-green-600 hover:bg-green-600/70 text-gray-50 hover:text-white transition ease-in-out duration-75 px-2 py-1 rounded-sm w-fit mx-auto"
 				>
 					<Icon
 						icon="heroicons:arrow-left-on-rectangle-solid"

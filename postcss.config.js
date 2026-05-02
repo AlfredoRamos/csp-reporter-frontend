@@ -1,8 +1,6 @@
-/* eslint-disable-next-line no-undef */
 export default {
 	plugins: {
-		tailwindcss: {},
-		autoprefixer: {},
+		'@tailwindcss/postcss': {},
 		cssnano: {
 			preset: [
 				'default',

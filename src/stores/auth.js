@@ -22,11 +22,15 @@ export const useAuthStore = defineStore('auth', () => {
 	};
 
 	const userData = computed(() => {
+		let data = null; // eslint-disable-line no-useless-assignment
+
 		try {
-			return JSON.parse(user.value);
-		} catch (ex) {
-			return null;
+			data = JSON.parse(user.value) ?? null;
+		} catch {
+			data = null;
 		}
+
+		return data;
 	});
 
 	const clean = () => {

@@ -21,7 +21,7 @@ const props = defineProps({
 
 <template>
 	<div
-		class="flex gap-2 p-4 shadow mb-4 rounded-md"
+		class="flex gap-2 p-4 shadow-sm mb-4 rounded-md"
 		:class="{
 			'bg-sky-50 text-sky-900': props?.type === 'info',
 			'bg-green-50 text-green-900': props?.type === 'success',

@@ -13,7 +13,7 @@ import Guest from '@/layouts/Guest.vue';
 			<div>You are not authorized to access the requested content.</div>
 			<RouterLink
 				:to="{ name: 'home' }"
-				class="whitespace-nowrap bg-green-600 hover:bg-green-600/70 text-gray-50 hover:text-white transition ease-in-out duration-75 px-2 py-1 rounded w-fit mx-auto"
+				class="whitespace-nowrap bg-green-600 hover:bg-green-600/70 text-gray-50 hover:text-white transition ease-in-out duration-75 px-2 py-1 rounded-sm w-fit mx-auto"
 			>
 				<Icon
 					icon="heroicons:arrow-uturn-left-solid"

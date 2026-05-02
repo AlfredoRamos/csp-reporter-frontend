@@ -64,7 +64,7 @@ onBeforeMount(() => {
 		<div class="flex flex-wrap items-center gap-4 mb-4">
 			<button
 				type="button"
-				class="whitespace-nowrap bg-sky-600 hover:bg-sky-600/70 text-gray-50 hover:text-white transition ease-in-out duration-75 px-2 py-1 rounded w-fit disabled:cursor-not-allowed"
+				class="whitespace-nowrap bg-sky-600 hover:bg-sky-600/70 text-gray-50 hover:text-white transition ease-in-out duration-75 px-2 py-1 rounded-sm w-fit disabled:cursor-not-allowed"
 				@click.prevent="handleCachePurge"
 				:disabled="loading"
 			>
