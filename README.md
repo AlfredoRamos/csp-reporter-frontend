@@ -10,7 +10,7 @@ Frontend for the **CSP Reporter** REST API using [Vue](https://vuejs.org), [Pini
 
 ## Requirements
 
-- [Node](https://nodejs.org/en/download) >= 24.5.0
+- [Node](https://nodejs.org/en/download) >= 25.9.0
 
 ### VSCode extensions
 
