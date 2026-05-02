@@ -140,7 +140,7 @@ const handleSubmit = async () => {
 	const url = isChangingPassword.value
 		? endpoints?.auth?.recover?.update
 		: endpoints?.auth?.recover?.index;
-	let data = {};
+	let data = {}; // eslint-disable-line no-useless-assignment
 
 	if (isChangingPassword.value) {
 		data = {

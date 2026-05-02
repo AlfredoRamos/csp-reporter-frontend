@@ -19,7 +19,7 @@ import { useNotification } from '@/composables/notification';
 const defaultTitle = import.meta.env.VITE_APP_TITLE ?? '';
 const defaultDescription = import.meta.env.VITE_APP_DESC ?? '';
 const canRegister =
-	import.meta.env.VITE_ENABLE_USER_REGISTER === 'true' ?? false;
+	(import.meta.env?.VITE_ENABLE_USER_REGISTER ?? 'true') === 'true';
 const companyUrl = import.meta.env.VITE_COMPANY_URL ?? '';
 const minPasswordLength = import.meta.env.VITE_MIN_PASSWORD_LENGTH ?? 10;
 

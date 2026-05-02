@@ -122,8 +122,7 @@ const rangeToList = (str) => {
 		return str;
 	}
 
-	let list = [];
-	list = str.split('-');
+	let list = str.split('-');
 	list = [...new Set(list)];
 
 	let first = Number(list[0]?.trim());
