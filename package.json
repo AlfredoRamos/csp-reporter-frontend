@@ -15,7 +15,7 @@
 		"@tailwindcss/postcss": "^4.3.0",
 		"@tanstack/vue-table": "^9.2.4",
 		"@vitejs/plugin-vue": "^6.0.6",
-		"@vueuse/core": "^14.3.0",
+		"@vueuse/core": "^15.0.0",
 		"@zxcvbn-ts/core": "^4.1.2",
 		"@zxcvbn-ts/language-common": "^4.1.2",
 		"@zxcvbn-ts/language-en": "^3.0.2",
